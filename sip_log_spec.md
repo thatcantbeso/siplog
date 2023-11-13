@@ -1,4 +1,4 @@
-# Sip Log
+# Sip Log Specification
 
 Straight forward application in order to track how you make your coffee.
 Use it to log your coffees, brewers, and grinders.
