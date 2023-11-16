@@ -1,0 +1,97 @@
+<%= form_with(model: coffee) do |form| %>
+  <% if coffee.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(coffee.errors.count, "error") %> prohibited this coffee from being saved:</h2>
+
+      <ul>
+        <% coffee.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :owner_id, style: "display: block" %>
+    <%= form.number_field :owner_id %>
+  </div>
+
+  <div>
+    <%= form.label :species, style: "display: block" %>
+    <%= form.text_field :species %>
+  </div>
+
+  <div>
+    <%= form.label :varietal, style: "display: block" %>
+    <%= form.text_field :varietal %>
+  </div>
+
+  <div>
+    <%= form.label :process, style: "display: block" %>
+    <%= form.text_field :process %>
+  </div>
+
+  <div>
+    <%= form.label :elevation, style: "display: block" %>
+    <%= form.number_field :elevation %>
+  </div>
+
+  <div>
+    <%= form.label :region, style: "display: block" %>
+    <%= form.text_field :region %>
+  </div>
+
+  <div>
+    <%= form.label :subregion, style: "display: block" %>
+    <%= form.text_field :subregion %>
+  </div>
+
+  <div>
+    <%= form.label :roast_level, style: "display: block" %>
+    <%= form.number_field :roast_level %>
+  </div>
+
+  <div>
+    <%= form.label :roast_date, style: "display: block" %>
+    <%= form.date_field :roast_date %>
+  </div>
+
+  <div>
+    <%= form.label :cup_score, style: "display: block" %>
+    <%= form.number_field :cup_score %>
+  </div>
+
+  <div>
+    <%= form.label :tasting_notes, style: "display: block" %>
+    <%= form.text_field :tasting_notes %>
+  </div>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :roaster, style: "display: block" %>
+    <%= form.text_field :roaster %>
+  </div>
+
+  <div>
+    <%= form.label :producer, style: "display: block" %>
+    <%= form.text_field :producer %>
+  </div>
+
+  <div>
+    <%= form.label :favorite, style: "display: block" %>
+    <%= form.check_box :favorite %>
+  </div>
+
+  <div>
+    <%= form.label :notes, style: "display: block" %>
+    <%= form.text_area :notes %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
