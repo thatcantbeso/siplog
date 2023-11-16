@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Grinders</h1>
+
+<div id="grinders">
+  <% @grinders.each do |grinder| %>
+    <%= render grinder %>
+    <p>
+      <%= link_to "Show this grinder", grinder %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New grinder", new_grinder_path %>
