@@ -1,0 +1,47 @@
+<%= form_with(model: grinder) do |form| %>
+  <% if grinder.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(grinder.errors.count, "error") %> prohibited this grinder from being saved:</h2>
+
+      <ul>
+        <% grinder.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :owner_id, style: "display: block" %>
+    <%= form.number_field :owner_id %>
+  </div>
+
+  <div>
+    <%= form.label :brand, style: "display: block" %>
+    <%= form.text_field :brand %>
+  </div>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :power, style: "display: block" %>
+    <%= form.text_field :power %>
+  </div>
+
+  <div>
+    <%= form.label :burr_type, style: "display: block" %>
+    <%= form.text_field :burr_type %>
+  </div>
+
+  <div>
+    <%= form.label :burr, style: "display: block" %>
+    <%= form.text_field :burr %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
