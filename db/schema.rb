@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_16_163620) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_16_180311) do
+  create_table "coffees", force: :cascade do |t|
+    t.integer "owner_id"
+    t.string "species"
+    t.string "varietal"
+    t.string "process"
+    t.integer "elevation"
+    t.string "region"
+    t.string "subregion"
+    t.integer "roast_level"
+    t.date "roast_date"
+    t.integer "cup_score"
+    t.string "tasting_notes"
+    t.string "name"
+    t.string "roaster"
+    t.string "producer"
+    t.boolean "favorite"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
