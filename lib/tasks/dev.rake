@@ -95,33 +95,24 @@ namespace :dev do
     elevations = ["1000", "500", "1250", "1600"]
     regions = ["kenya", "ethiopia", "colombia", "el salvador"]
     subregions = ["Yirgacheffe", "Sao Paolo", "Ocotepeque", "Alta Mogiana Mineira", "Huehuetenango"]
-   # roast_levels_sample = rand(1..100)
-   # roast_dates = Faker::Date.backward(days: 365)
-   # cup_scores_sample = rand(1..100)
     tasting_notes = ["sweet", "fruit", "sugar", "charcoal", "woody", "lemon", "strawberry", "cinnamon"]
     names = ["coffee name 1", "coffee name 2", "coffee name 3"]
     roasters = ["hydrangea", "onyx", "black white", "botz", "4LW"]
-   # producers = Faker::Name.name
     favorites = [true, false]
-   # notes = Faker::Quote.famous_last_words
+
 
     User.all.each do |user|
-      15.times do
+      2.times do
         specie = species.sample
         varietal = varietals.sample
         process = processes.sample
         elevation = elevations.sample
         region = regions.sample
         subregion = subregions.sample
-      #  roast_level = roast_levels_sample
-      #  roast_date = roast_dates
-      #  cup_score = cup_scores_sample
         tasting_note = tasting_notes.sample
         name = names.sample
         roaster = roasters.sample
-       # producer = producers
         favorite = favorites.sample
-       # notes = notes
 
         c = Coffee.create(
           owner_id: user.id,
@@ -138,7 +129,7 @@ namespace :dev do
           name: name,
           roaster: roaster,
           producer: Faker::Name.name,
-          favorite: favorites,
+          favorite: favorite,
           notes: Faker::Quote.famous_last_words,
         )
       end
