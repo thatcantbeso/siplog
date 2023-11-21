@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @brewer %>
+
+<div>
+  <%= link_to "Edit this brewer", edit_brewer_path(@brewer) %> |
+  <%= link_to "Back to brewers", brewers_path %>
+
+  <%= button_to "Destroy this brewer", @brewer, method: :delete %>
+</div>
