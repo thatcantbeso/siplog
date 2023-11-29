@@ -23,4 +23,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :logs, class_name: "Log", foreign_key: "owner_id", dependent: :destroy
+  has_many :coffees, class_name: "Coffee", foreign_key: "owner_id", dependent: :destroy
+  has_many :grinders, class_name: "Grinder", foreign_key: "owner_id", dependent: :destroy
+  has_many :brewers, class_name: "Brewer", foreign_key: "owner_id", dependent: :destroy
 end
