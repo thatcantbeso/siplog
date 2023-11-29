@@ -1,0 +1,42 @@
+<%= form_with(model: brewer) do |form| %>
+  <% if brewer.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(brewer.errors.count, "error") %> prohibited this brewer from being saved:</h2>
+
+      <ul>
+        <% brewer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :owner_id, style: "display: block" %>
+    <%= form.number_field :owner_id %>
+  </div>
+
+  <div>
+    <%= form.label :brand, style: "display: block" %>
+    <%= form.text_field :brand %>
+  </div>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :material, style: "display: block" %>
+    <%= form.text_field :material %>
+  </div>
+
+  <div>
+    <%= form.label :geometry, style: "display: block" %>
+    <%= form.text_field :geometry %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
