@@ -16,6 +16,7 @@ namespace :dev do
          "dev:add_grinders",
          "dev:add_brewers",
          "dev:add_coffees",
+         "dev:add_logs"
        ] do
     puts "done"
   end
@@ -51,7 +52,7 @@ namespace :dev do
       burr_type = burr_types.sample
       burr = burrs.sample
 
-      g = Grinder.create(
+      Grinder.create(
         owner_id: user.id,
         brand: brand,
         name: name,
@@ -76,7 +77,7 @@ namespace :dev do
       material = materials.sample
       geometry = geometrys.sample
 
-      b = Brewer.create(
+      Brewer.create(
         owner_id: user.id,
         brand: brand,
         name: name,
@@ -100,7 +101,6 @@ namespace :dev do
     roasters = ["hydrangea", "onyx", "black white", "botz", "4LW"]
     favorites = [true, false]
 
-
     User.all.each do |user|
       2.times do
         specie = species.sample
@@ -114,7 +114,7 @@ namespace :dev do
         roaster = roasters.sample
         favorite = favorites.sample
 
-        c = Coffee.create(
+        Coffee.create(
           owner_id: user.id,
           species: specie,
           varietal: varietal,
@@ -131,6 +131,39 @@ namespace :dev do
           producer: Faker::Name.name,
           favorite: favorite,
           notes: Faker::Quote.famous_last_words,
+        )
+      end
+    end
+  end
+
+  task add_logs: :environment do
+    puts "add logs"
+
+    User.all.each do |user|
+      10.times do
+        water_type_sample = ["Filtered", "Spring", "Fairy", "Holy"].sample
+        filter_paper_sample = ["Aeropress", "Chemex", "Hario V60"].sample
+        favorite_sample = [true, false].sample
+
+        Log.create(
+          owner_id: user.id,
+          coffee_id: coffee.id,
+          grinder_id: grinder.id,
+          brewer_id: brewer.id,
+          notes: Faker::Quote.yoda,
+          filter_paper: filter_paper_sample,
+          dosage: rand(15.35),
+          water_temperature: rand(180..212),
+          water_type: water_type_sample,
+          photo_id: Faker::Avatar.image,
+          grind_size: rand(1..100),
+          bloom_time_seconds: rand(1..60),
+          brew_time_seconds: rand(180..330),
+          bloom_water: rand(1..150),
+          total_water: rand(250..400),
+          date_time: Faker::Time.backward(days: 30),
+          rating: rand(1..100),
+          favorite: favorite_sample,
         )
       end
     end
