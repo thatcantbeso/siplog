@@ -144,6 +144,9 @@ namespace :dev do
         water_type_sample = ["Filtered", "Spring", "Fairy", "Holy"].sample
         filter_paper_sample = ["Aeropress", "Chemex", "Hario V60"].sample
         favorite_sample = [true, false].sample
+        coffee = Coffee.all.sample
+        grinder = Grinder.all.sample
+        brewer = Brewer.all.sample
 
         Log.create(
           owner_id: user.id,
