@@ -28,4 +28,5 @@ class User < ApplicationRecord
   has_many :coffees, class_name: "Coffee", foreign_key: "owner_id", dependent: :destroy
   has_many :grinders, class_name: "Grinder", foreign_key: "owner_id", dependent: :destroy
   has_many :brewers, class_name: "Brewer", foreign_key: "owner_id", dependent: :destroy
+  # has_many :photos , through: :logs
 end

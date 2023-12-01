@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_16_181122) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_01_172808) do
   create_table "brewers", force: :cascade do |t|
     t.integer "owner_id"
     t.string "brand"
@@ -63,7 +63,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_16_181122) do
     t.integer "dosage"
     t.integer "water_temperature"
     t.string "water_type"
-    t.integer "photo_id", null: false
     t.integer "grind_size"
     t.integer "bloom_time_seconds"
     t.integer "brew_time_seconds"
@@ -74,7 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_16_181122) do
     t.boolean "favorite"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["photo_id"], name: "index_logs_on_photo_id"
+    t.string "photo"
   end
 
   create_table "users", force: :cascade do |t|
@@ -91,5 +90,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_16_181122) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "logs", "photos"
 end
