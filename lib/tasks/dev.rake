@@ -158,7 +158,7 @@ namespace :dev do
           dosage: rand(15.35),
           water_temperature: rand(180..212),
           water_type: water_type_sample,
-          photo_id: Faker::Avatar.image,
+          photo: Faker::Avatar.image,
           grind_size: rand(1..100),
           bloom_time_seconds: rand(1..60),
           brew_time_seconds: rand(180..330),
