@@ -29,5 +29,4 @@ class Log < ApplicationRecord
   belongs_to :grinder, required: true, class_name: "Grinder", foreign_key: "grinder_id"
   belongs_to :coffee, required: true, class_name: "Coffee", foreign_key: "coffee_id"
   belongs_to :brewer, required: true, class_name: "Brewer", foreign_key: "brewer_id"
-  # has_one :photo, class_name: "Log", foreign_key: "owner_id"
 end
