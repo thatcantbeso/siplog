@@ -3,6 +3,7 @@ class LogsController < ApplicationController
 
   # GET /logs or /logs.json
   def index
+    # @user = User.find_by!(id: params.fetch(:id))
     @logs = Log.all
   end
 

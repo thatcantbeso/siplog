@@ -1,4 +1,10 @@
 <div id="<%= dom_id log %>">
+
+  <p>
+    <strong>Photo:</strong>
+    <img src="<%= log.photo %>">
+  </p>
+
   <p>
     <strong>Owner:</strong>
     <%= log.owner_id %>
@@ -20,23 +26,18 @@
   </p>
 
   <p>
-    <strong>Notes:</strong>
-    <%= log.notes %>
-  </p>
-
-  <p>
     <strong>Filter paper:</strong>
     <%= log.filter_paper %>
   </p>
 
   <p>
     <strong>Dosage:</strong>
-    <%= log.dosage %>
+    <%= log.dosage %> grams
   </p>
 
   <p>
     <strong>Water temperature:</strong>
-    <%= log.water_temperature %>
+    <%= log.water_temperature %>°F
   </p>
 
   <p>
@@ -45,33 +46,28 @@
   </p>
 
   <p>
-    <strong>Photo:</strong>
-    <%= log.photo_id %>
-  </p>
-
-  <p>
     <strong>Grind size:</strong>
     <%= log.grind_size %>
   </p>
 
   <p>
-    <strong>Bloom time seconds:</strong>
-    <%= log.bloom_time_seconds %>
+    <strong>Bloom time</strong>
+    <%= log.bloom_time_seconds %> seconds
   </p>
 
   <p>
-    <strong>Brew time seconds:</strong>
-    <%= log.brew_time_seconds %>
+    <strong>Brew time</strong>
+    <%= log.brew_time_seconds %> seconds
   </p>
 
   <p>
     <strong>Bloom water:</strong>
-    <%= log.bloom_water %>
+    <%= log.bloom_water %> grams
   </p>
 
   <p>
     <strong>Total water:</strong>
-    <%= log.total_water %>
+    <%= log.total_water %> grams
   </p>
 
   <p>
@@ -81,7 +77,12 @@
 
   <p>
     <strong>Rating:</strong>
-    <%= log.rating %>
+    <%= log.rating %> points
+  </p>
+
+  <p>
+    <strong>Notes:</strong>
+    <%= log.notes %>
   </p>
 
   <p>

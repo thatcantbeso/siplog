@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :grinders
   resources :coffees
   devise_for :users
-  root to: "home#index"
+  
+  root to: "logs#index"
 end
