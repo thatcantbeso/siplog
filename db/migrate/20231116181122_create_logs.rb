@@ -10,7 +10,7 @@ class CreateLogs < ActiveRecord::Migration[7.0]
       t.integer :dosage
       t.integer :water_temperature
       t.string :water_type
-      t.references :photo, null: false, foreign_key: true
+      t.string :photo
       t.integer :grind_size
       t.integer :bloom_time_seconds
       t.integer :brew_time_seconds
