@@ -49,22 +49,27 @@ class GrindersController < ApplicationController
 
   # DELETE /grinders/1 or /grinders/1.json
   def destroy
-    @grinder.destroy
+    if current_user == @grinder.owner
+      @grinder.destroy
 
-    respond_to do |format|
-      format.html { redirect_to grinders_url, notice: "Grinder was successfully destroyed." }
-      format.json { head :no_content }
+      respond_to do |format|
+        format.html { redirect_to grinders_url, notice: "Grinder was successfully destroyed." }
+        format.json { head :no_content }
+      end
+    else
+      redirect_back(fallback_location: root_url, notice: "Not your grinder.")
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_grinder
-      @grinder = Grinder.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def grinder_params
-      params.require(:grinder).permit(:owner_id, :brand, :name, :power, :burr_type, :burr)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_grinder
+    @grinder = Grinder.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def grinder_params
+    params.require(:grinder).permit(:owner_id, :brand, :name, :power, :burr_type, :burr)
+  end
 end

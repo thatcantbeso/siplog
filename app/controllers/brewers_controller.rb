@@ -49,12 +49,16 @@ class BrewersController < ApplicationController
 
   # DELETE /brewers/1 or /brewers/1.json
   def destroy
+    if current_user == @brewer.owner
     @brewer.destroy
 
     respond_to do |format|
       format.html { redirect_to brewers_url, notice: "Brewer was successfully destroyed." }
       format.json { head :no_content }
     end
+  else
+    redirect_back(fallback_location: root_url, notice: "Not your brewer.")
+  end
   end
 
   private
