@@ -2,13 +2,16 @@
 
 <h1>Brewers</h1>
 
+<%= link_to "New brewer", new_brewer_path %>
+<br>
+<br>
 <div id="brewers">
   <% @brewers.each do |brewer| %>
-    <%= render brewer %>
-    <p>
-      <%= link_to "Show this brewer", brewer %>
-    </p>
+    <% if current_user == brewer.owner %>
+      <%= render brewer %>
+      <p>
+        <%= link_to "Show this brewer", brewer %>
+      </p>
+    <% end %>
   <% end %>
 </div>
-
-<%= link_to "New brewer", new_brewer_path %>

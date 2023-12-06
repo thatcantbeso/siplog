@@ -2,13 +2,17 @@
 
 <h1>Coffees</h1>
 
+<%= link_to "New coffee", new_coffee_path %>
+<br>
+<br>
+
 <div id="coffees">
   <% @coffees.each do |coffee| %>
-    <%= render coffee %>
-    <p>
-      <%= link_to "Show this coffee", coffee %>
-    </p>
+    <% if current_user == coffee.owner %>
+      <%= render coffee %>
+      <p>
+        <%= link_to "Show this coffee", coffee %>
+      </p>
+    <% end %>
   <% end %>
 </div>
-
-<%= link_to "New coffee", new_coffee_path %>
