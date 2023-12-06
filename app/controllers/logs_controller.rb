@@ -50,22 +50,27 @@ class LogsController < ApplicationController
 
   # DELETE /logs/1 or /logs/1.json
   def destroy
-    @log.destroy
+    if current_user == @log.owner
+      @log.destroy
 
-    respond_to do |format|
-      format.html { redirect_to logs_url, notice: "Log was successfully destroyed." }
-      format.json { head :no_content }
+      respond_to do |format|
+        format.html { redirect_to logs_url, notice: "Log was successfully destroyed." }
+        format.json { head :no_content }
+      end
+    else
+      redirect_back(fallback_location: root_url, notice: "Not your log.")
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_log
-      @log = Log.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def log_params
-      params.require(:log).permit(:owner_id, :coffee_id, :grinder_id, :brewer_id, :notes, :filter_paper, :dosage, :water_temperature, :water_type, :photo, :grind_size, :bloom_time_seconds, :brew_time_seconds, :bloom_water, :total_water, :date_time, :rating, :favorite)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_log
+    @log = Log.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def log_params
+    params.require(:log).permit(:owner_id, :coffee_id, :grinder_id, :brewer_id, :notes, :filter_paper, :dosage, :water_temperature, :water_type, :photo, :grind_size, :bloom_time_seconds, :brew_time_seconds, :bloom_water, :total_water, :date_time, :rating, :favorite)
+  end
 end

@@ -10,35 +10,41 @@
             <a class="nav-link active" aria-current="page" <%= link_to 'Home', logs_path %></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </ul>
-
-            <ul class="navbar-nav">
-              <% if user_signed_in? %>
-                <li class="nav-item">
-                  <%= link_to "Edit #{current_user.first_name}'s Profile", edit_user_registration_path, class: "nav-link" %>
+              <a class="nav-link active" aria-current="page" <%= link_to 'Coffee', coffees_path %></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" <%= link_to 'Grinders', grinders_path %></a>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
-                </li>
+                  <a class="nav-link active" aria-current="page" <%= link_to 'Brewers', brewers_path %></a>
+                  </ul>
 
-              <% else %>
+                  <ul class="navbar-nav">
+                    <% if user_signed_in? %>
+                      <li class="nav-item">
+                        <%= link_to "Edit #{current_user.first_name}'s Profile", edit_user_registration_path, class: "nav-link" %>
+                      </li>
+                      <li class="nav-item">
+                        <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
+                      </li>
 
-                <li class="nav-item">
-                  <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
-                </li>
+                    <% else %>
 
-              <% end %>
+                      <li class="nav-item">
+                        <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
+                      </li>
+                      <li class="nav-item">
+                        <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+                      </li>
 
-            </ul>
+                    <% end %>
 
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-      </nav>
+                  </ul>
+
+                  <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                  </form>
+                </div>
+              </div>
+            </nav>
