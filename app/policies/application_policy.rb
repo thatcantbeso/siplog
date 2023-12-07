@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
 class ApplicationPolicy
-  attr_reader :user, :log
+  attr_reader :user, :record
 
-  def initialize(user, log)
+  def initialize(user, record)
     raise Pundit::NotAuthorizedError, "Must be logged in" unless user
     @user = user
-    @log = log
+    @record = record
   end
 
   def index?
-    false
+    true
   end
 
   def show?

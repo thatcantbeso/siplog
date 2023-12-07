@@ -102,7 +102,7 @@ namespace :dev do
     favorites = [true, false]
 
     User.all.each do |user|
-      2.times do
+      3.times do
         specie = species.sample
         varietal = varietals.sample
         process = processes.sample

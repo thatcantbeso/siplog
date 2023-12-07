@@ -10,10 +10,20 @@ class LogsController < ApplicationController
   def index
     # @user = User.find_by!(id: params.fetch(:id))
     @logs = Log.all
+    @logs = policy_scope(Log)
+    verify_policy_scoped
   end
 
   # GET /logs/1 or /logs/1.json
   def show
+    @log = Log.find(params[:id])
+    authorize @log 
+  end
+
+  private
+
+  def set_user
+    @user = current_user
   end
 
   # GET /logs/new
