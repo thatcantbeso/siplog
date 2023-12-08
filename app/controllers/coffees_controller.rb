@@ -4,7 +4,6 @@ class CoffeesController < ApplicationController
   after_action :verify_policy_scoped, only: %i[index]
   # GET /coffees or /coffees.json
   def index
-    @coffees = Coffee.all
     @coffees = policy_scope(Coffee)
     verify_policy_scoped
   end
@@ -82,10 +81,5 @@ class CoffeesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def coffee_params
     params.require(:coffee).permit(:owner_id, :species, :varietal, :process, :elevation, :region, :subregion, :roast_level, :roast_date, :cup_score, :tasting_notes, :name, :roaster, :producer, :favorite, :notes)
-  end
-
-  def user_not_authorized
-    flash[:alert] = "You are not authorized."
-    redirect_to(request.referer || root_path)
   end
 end

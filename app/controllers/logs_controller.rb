@@ -1,6 +1,5 @@
 class LogsController < ApplicationController
   before_action :set_log, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!
   skip_before_action :authenticate_user!, only: :landing
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   # after_action :verify_authorized, except: %i[index]
@@ -9,14 +8,13 @@ class LogsController < ApplicationController
   # GET /logs or /logs.json
   def index
     # @user = User.find_by!(id: params.fetch(:id))
-    @logs = Log.all
     @logs = policy_scope(Log)
     verify_policy_scoped
   end
 
   # GET /logs/1 or /logs/1.json
   def show
-    @log = Log.find(params[:id])
+    # @log = Log.find(params[:id])
     authorize @log 
   end
 
@@ -87,10 +85,5 @@ class LogsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def log_params
     params.require(:log).permit(:owner_id, :coffee_id, :grinder_id, :brewer_id, :notes, :filter_paper, :dosage, :water_temperature, :water_type, :photo, :grind_size, :bloom_time_seconds, :brew_time_seconds, :bloom_water, :total_water, :date_time, :rating, :favorite)
-  end
-
-  def user_not_authorized
-    flash[:alert] = "You are not authorized."
-    redirect_to(request.referer || root_path)
   end
 end
