@@ -6,14 +6,13 @@
   <%= link_to "New log", new_log_path %>
 </div>
 
+<br>
+
 <div id="logs">
   <% @logs.each do |log| %>
 
     <% if current_user == log.owner %>
       <%= render log %>
-      <p>
-        <%= link_to "Show this log", log %>
-      </p>
     <% end %>
   <% end %>
 </div>
