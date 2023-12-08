@@ -81,10 +81,10 @@
     <%= log.rating %> points
   </p>
 
-  <p>
+<!--  <p>
     <strong>Notes:</strong>
-    <%= log.notes %>
-  </p>
+    <%#= log.notes %>-->
+<!--  </p>-->
 
   <p>
     <strong>Favorite:</strong>
@@ -92,3 +92,20 @@
   </p>
 
 </div>
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col">
+    <div class="card">
+       <div class="card-footer">
+      <small class="text-body-secondary">Made on <%= log.date_time.strftime("%D at %I:%k%p") %></small>
+    </div>
+      <img src="<%= log.photo %>" class="card-img-top" alt="...">
+
+      <div class="card-body">
+        <h5 class="card-title">Notes</h5>
+        <p class="card-text"> <%= log.notes %></p>
+      </div>
+
+
+    </div>
+  </div>
