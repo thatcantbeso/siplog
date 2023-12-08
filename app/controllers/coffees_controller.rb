@@ -1,13 +1,23 @@
 class CoffeesController < ApplicationController
   before_action :set_coffee, only: %i[ show edit update destroy ]
-
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  after_action :verify_policy_scoped, only: %i[index]
   # GET /coffees or /coffees.json
   def index
-    @coffees = Coffee.all
+    @coffees = policy_scope(Coffee)
+    verify_policy_scoped
   end
 
   # GET /coffees/1 or /coffees/1.json
   def show
+    @coffee = Coffee.find(params[:id])
+    authorize @coffee
+  end
+
+  private
+
+  def set_user
+    @user = current_user
   end
 
   # GET /coffees/new
@@ -50,25 +60,26 @@ class CoffeesController < ApplicationController
   # DELETE /coffees/1 or /coffees/1.json
   def destroy
     if current_user == @coffee.owner
-    @coffee.destroy
+      @coffee.destroy
 
-    respond_to do |format|
-      format.html { redirect_to coffees_url, notice: "Coffee was successfully destroyed." }
-      format.json { head :no_content }
+      respond_to do |format|
+        format.html { redirect_to coffees_url, notice: "Coffee was successfully destroyed." }
+        format.json { head :no_content }
+      end
+    else
+      redirect_back(fallback_location: root_url, notice: "Not your coffee.")
     end
-  else
-    redirect_back(fallback_location: root_url, notice: "Not your coffee.")
-  end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_coffee
-      @coffee = Coffee.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def coffee_params
-      params.require(:coffee).permit(:owner_id, :species, :varietal, :process, :elevation, :region, :subregion, :roast_level, :roast_date, :cup_score, :tasting_notes, :name, :roaster, :producer, :favorite, :notes)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_coffee
+    @coffee = Coffee.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def coffee_params
+    params.require(:coffee).permit(:owner_id, :species, :varietal, :process, :elevation, :region, :subregion, :roast_level, :roast_date, :cup_score, :tasting_notes, :name, :roaster, :producer, :favorite, :notes)
+  end
 end

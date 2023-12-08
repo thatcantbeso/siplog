@@ -1,13 +1,23 @@
 class GrindersController < ApplicationController
   before_action :set_grinder, only: %i[ show edit update destroy ]
-
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  after_action :verify_policy_scoped, only: %i[index]
   # GET /grinders or /grinders.json
   def index
-    @grinders = Grinder.all
+    @grinders = policy_scope(Grinder)
+    verify_policy_scoped 
   end
 
   # GET /grinders/1 or /grinders/1.json
   def show
+    @grinder = Grinder.find(params[:id])
+    authorize @grinder
+  end
+
+  private
+
+  def set_user
+    @user = current_user
   end
 
   # GET /grinders/new

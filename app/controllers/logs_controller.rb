@@ -1,14 +1,27 @@
 class LogsController < ApplicationController
   before_action :set_log, only: %i[ show edit update destroy ]
+  skip_before_action :authenticate_user!, only: :landing
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  # after_action :verify_authorized, except: %i[index]
+  after_action :verify_policy_scoped, only: %i[index]
 
   # GET /logs or /logs.json
   def index
     # @user = User.find_by!(id: params.fetch(:id))
-    @logs = Log.all
+    @logs = policy_scope(Log)
+    verify_policy_scoped
   end
 
   # GET /logs/1 or /logs/1.json
   def show
+    # @log = Log.find(params[:id])
+    authorize @log 
+  end
+
+  private
+
+  def set_user
+    @user = current_user
   end
 
   # GET /logs/new
