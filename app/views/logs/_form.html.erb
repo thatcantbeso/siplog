@@ -1,4 +1,4 @@
-<%= form_with(model: log) do |form| %>
+<%= form_with(model: log, class: "d-inline-block", data: {remote: true}) do |form| %>
   <% if log.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(log.errors.count, "error") %> prohibited this log from being saved:</h2>
@@ -12,7 +12,7 @@
   <% end %>
 
   <div>
-    <%= form.label :owner_id, style: "display: block" %>
+    <%= form.hidden_field :owner_id, style: "display: block" %>
     <%= form.number_field :owner_id %>
   </div>
 
@@ -96,10 +96,21 @@
     <%= form.number_field :rating %>
   </div>
 
-  <div>
-    <%= form.label :favorite, style: "display: block" %>
-    <%= form.check_box :favorite %>
-  </div>
+     <%= form_with(model: log, class: "d-inline-block", data: { remote: true }) do |form| %>
+
+        <% form.button class: "btn btn-link link-underline link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+
+
+
+<!--  <div>-->
+    <%#= form.label :favorite, style: "display: block" %>
+    <%#= form.check_box :favorite %>
+<!--  </div>-->
+
+          <i id="<% log.favorite %>_favorites_icon" class="fa-solid fa-mug-hot fa-shake fa-xl" style="color: #f0d000;"></i>
+          Like
+          <% end %>
+          <% end %>
 
   <div>
     <%= form.submit %>

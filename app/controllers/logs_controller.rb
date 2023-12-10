@@ -2,7 +2,7 @@ class LogsController < ApplicationController
   before_action :set_log, only: %i[ show edit update destroy ]
   skip_before_action :authenticate_user!, only: :landing
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-  # after_action :verify_authorized, except: %i[index]
+  after_action :verify_authorized, except: %i[index]
   after_action :verify_policy_scoped, only: %i[index]
 
   # GET /logs or /logs.json
@@ -42,6 +42,7 @@ class LogsController < ApplicationController
       if @log.save
         format.html { redirect_to log_url(@log), notice: "Log was successfully created." }
         format.json { render :show, status: :created, location: @log }
+        format.js
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @log.errors, status: :unprocessable_entity }
@@ -70,6 +71,7 @@ class LogsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to logs_url, notice: "Log was successfully destroyed." }
         format.json { head :no_content }
+        format.js
       end
     else
       redirect_back(fallback_location: root_url, notice: "Not your log.")

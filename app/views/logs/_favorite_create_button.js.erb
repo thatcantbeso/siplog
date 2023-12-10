@@ -1,0 +1,7 @@
+console.log("Favorite created");
+
+var existingFavorites = $("#<%= log_id(@log.favorite) %>_favorites");
+var updatedFavorites = $("<%= j(render 'logs/favorite', log: @log.favorite) %>");
+
+existingFavorites.replaceWith(updatedFavorites);
+icon.addClass("fa-shake");
