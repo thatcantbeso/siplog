@@ -1,16 +1,11 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Logs</h1>
 
 <div>
   <%= link_to "New log", new_log_path %>
 </div>
 
-<br>
-
 <div id="logs">
   <% @logs.each do |log| %>
-
     <% if current_user == log.owner %>
       <%= render log %>
     <% end %>

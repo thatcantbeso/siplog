@@ -1,44 +1,7 @@
-<div class="row row-cols-1 row-cols-md-2 g-4">
-  <div class="col">
-    <div class="card">
-      <div class="card-header">
-        <small class="text-body-secondary">Made on <%= log.date_time.strftime("%D at %I:%k%p") %></small>
-      </div>
-      <img src="<%= log.photo %>" class="card-img-top" alt="...">
-
-      <div class="card-body">
-        <h5 class="card-title">Notes</h5>
-        <p class="card-text"> <%= log.notes %></p>
-      </div>
-
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          <div>
-            <label for="customRange1" class="form-label"><b>Rating</b>: <%= log.rating %> points</label>
-            <input type="range" class="form-range" min="0" max="100" id="customRange1">
-          </div>
-        </li>
-
-        <li class="list-group-item"><b>Favorite:</b> <%= log.favorite %></li>
-        <li class="list-group-item"><b>Name:</b> <%= log.coffee.name %></li>
-        <li class="list-group-item"><b>Grinder:</b> <%= log.grinder.name %></li>
-        <li class="list-group-item"><b>Brewer:</b> <%= log.brewer.name %></li>
-        <li class="list-group-item"><b>Filter Paper:</b> <%= log.filter_paper %></li>
-        <li class="list-group-item"><b>Dosage:</b> <%= log.dosage %> grams</li>
-        <li class="list-group-item"><b>Temperature:</b> <%= log.water_temperature %>°F</li>
-        <li class="list-group-item"><b>Water Type:</b> <%= log.water_type %></li>
-        <li class="list-group-item"><b>Grind Size:</b> <%= log.grind_size%></li>
-        <li class="list-group-item"><b>Bloom Time:</b> <%= log.bloom_time_seconds %> seconds</li>
-        <li class="list-group-item"><b>Bloom Water:</b> <%= log.bloom_water %> grams</li>
-        <li class="list-group-item"><b>Total Water:</b> <%= log.total_water %> grams</li>
-        <li class="list-group-item"><b>Brew Time:</b> <%= log.brew_time_seconds %> seconds</li>
-      </ul>
-
-      <br>
-      <div class="d-grid gap-2 col-6 mx-auto">
-        <button class="btn btn-primary" type="button"> <%= link_to "Show this log", log %> </button>
-      </div>
-      <br>
-
+<div class="row row-cols-1 row-cols-md-2 m-2 g-4">
+  <% @logs.each do |log| %>
+    <div class="col">
+      <%= render 'log_card', log: log %>
     </div>
-  </div>
+  <% end %>
+</div>
