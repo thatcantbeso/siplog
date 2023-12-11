@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :logs, except: [:show] do
+  resources :logs, except: [:landing] do
     resources :brewers
     resources :grinders
     resources :coffees
@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   devise_for :users
 
   
-  root to: "logs#index"
+  root to: "logs#landing"
 end

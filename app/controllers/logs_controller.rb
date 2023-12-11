@@ -1,6 +1,5 @@
 class LogsController < ApplicationController
   before_action :set_log, only: %i[ edit update destroy ]
-  skip_before_action :authenticate_user!, only: :landing
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   after_action :verify_authorized, except: %i[index]
   after_action :verify_policy_scoped, only: %i[index]
