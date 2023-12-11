@@ -6,6 +6,7 @@ class LogsController < ApplicationController
   after_action :verify_policy_scoped, only: %i[index]
 
   def index
+    @user = current_user
     @logs = policy_scope(Log)
     verify_policy_scoped
   end

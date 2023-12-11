@@ -2,85 +2,74 @@
   <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
       <small class="text-body-secondary">Made on <%= log.date_time.strftime("%D at %I:%M%p") %></small>
-      <%# if log.favorite %>
-      <!--              <button class="btn btn-link favorite-button"><i class="fa-solid fa-mug-hot fa-shake fa-xl" style="color: #f0d000;"></i></button>-->
-      <%# end %>
-
-      <%= form_with(model: log, class: "d-inline-block", data: { remote: true }) do |form| %>
-        <% form.button class: "btn btn-link link-underline link-underline-opacity-0 link-underline-opacity-100-hover" do %>
-
-          <i id="<% log.favorite %>_favorites_icon" class="fa-solid fa-mug-hot fa-shake fa-xl" style="color: #f0d000;"></i>
-        <% end %>
-      <%end%>
-      <!---->
-    </div>
-
-    <img src="<%= log.photo %>" class="card-img-top" alt="<%= log.photo.present? ? 'Log Image' : 'Default Alt Text' %>">
-
-    <div class="card-body">
-      <h5 class="card-title">Notes</h5>
-      <p class="card-text"><%= log.notes %></p>
-    </div>
-
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-        <label for="ratingSlider" class="form-label"><b>Rating:</b> <span id="ratingValue"><%= log.rating %></span> points</label>
-        <input type="text" id="ratingSlider" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="<%= log.rating %>" />
-      </li>
-
-      <li class="list-group-item">
-        <div>
-          <label for="coffeeRange" class="form-label"><b>Rating:</b> <span id="currentCoffeeNumber<%= log.id %>"><%= log.rating %></span> points</label>
-          <input type="range" class="form-range" min="0" max="100" id="coffeeRange" data-log-id="<%= log.id %>">
-        </div>
-      </li>
-
-      <%= form_with(model: log, class: "d-inline-block", data: {remote: true}) do |form| %>
-      
-        <div>
-          <%= form.label :rating, style: "display: block" %>
-          <%= form.range_field :rating, in:1..100, class:"form-range" %>
-          <div class="actions">
-            <%= form.submit %>
-          </div>
-        </div>
-
+      <% if log.favorite %>
+        <button class="btn btn-link favorite-button"><i class="fa-solid fa-mug-hot fa-shake fa-xl" style="color: #f0d000;"></i></button>
       <% end %>
 
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <div>
-          <p><strong>Rating: </strong><span id="currentCoffeeRating"><%= log.rating %> points</span></p>
-        </div>
-        <div class="d-flex">
-          <%= link_to "<i class='fas fa-plus'></i>".html_safe, increase_range_log_path(log), method: :post, remote: true, class: "btn btn-success me-2", id: "increaseRangeBtn" %>
-          <%= link_to "<i class='fas fa-minus'></i>".html_safe, decrease_range_log_path(log), method: :post, remote: true, class: "btn btn-danger", id: "decreaseRangeBtn" %>
-        </div>
-      </li>
+        <%#= form_with(model: log, class: "d-inline-block", data: { remote: true }) do |form| %>
+          <%# form.button class: "btn btn-link link-underline link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+            <!--
+            <i id="<%# log.favorite %>_favorites_icon" class="fa-solid fa-mug-hot fa-shake fa-xl" style="color: #f0d000;"></i>
+          <%# end %>-->
+            <%#end%>
 
-      <ul class="list-group list-group-flush">
-        <div class="row">
-          <div class="col">
-            <li class="list-group-item"><b>Favorite:</b> <%= log.favorite %></li>
-            <li class="list-group-item"><b>Name:</b> <%= log.coffee.name %></li>
-            <li class="list-group-item"><b>Grinder:</b> <%= log.grinder.name %></li>
-            <li class="list-group-item"><b>Brewer:</b> <%= log.brewer.name %></li>
-            <li class="list-group-item"><b>Filter Paper:</b> <%= log.filter_paper %></li>
-            <li class="list-group-item"><b>Dosage:</b> <%= log.dosage %> grams</li>
-            <li class="list-group-item"><b>Grind Size:</b> <%= log.grind_size%></li>
-          </div>
-          <div class="col">
-            <li class="list-group-item"><b>Temperature:</b> <%= log.water_temperature %>°F</li>
-            <li class="list-group-item"><b>Water Type:</b> <%= log.water_type %></li>
-            <li class="list-group-item"><b>Bloom Time:</b> <%= log.bloom_time_seconds %> seconds</li>
-            <li class="list-group-item"><b>Bloom Water:</b> <%= log.bloom_water %> grams</li>
-            <li class="list-group-item"><b>Total Water:</b> <%= log.total_water %> grams</li>
-            <li class="list-group-item"><b>Brew Time:</b> <%= log.brew_time_seconds %> seconds</li>
-          </div>
         </div>
 
-      </ul>
-      <div class="d-grid gap-2 col-6 mx-auto mt-3 mb-3">
-        <%= link_to "Edit this log", edit_log_path(log), class: "btn btn-primary text-white", type: "button" %>
+        <img src="<%= log.photo %>" class="card-img-top" alt="<%= log.photo.present? ? 'Log Image' : 'Default Alt Text' %>">
+
+        <div class="card-body">
+          <h5 class="card-title">Notes</h5>
+          <p class="card-text"><%= log.notes %></p>
+        </div>
+
+        <ul class="list-group list-group-flush">
+          <div>
+            <label for="coffeeRange" class="form-label"><b>Rating:</b> </label>
+            <span id="currentCoffeeNumber<%= log.id %>"><%= log.rating %></span> points
+          </div>
+
+          <%= form_with(model: log, class: "d-inline-block", data: { remote: true }) do |form| %>
+            <div class="d-flex justify-content-between align-items-center">
+              <%= form.range_field :rating, in: 1..100, class: "form-range w-100" %>
+            </div>
+
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <div class="d-flex">
+                <%= link_to "<i class='fas fa-plus'></i>".html_safe, increase_range_log_path(log), method: :post, remote: true, class: "btn btn-success me-2", id: "increaseRangeBtn" %>
+                <%= link_to "<i class='fas fa-minus'></i>".html_safe, decrease_range_log_path(log), method: :post, remote: true, class: "btn btn-danger me-2", id: "decreaseRangeBtn" %>
+              </div>
+              <div class="actions">
+                <%= form.submit class: "btn btn-sm btn-primary" %>
+              </div>
+            </li>
+
+          <% end %>
+        </ul>
+
+        <ul class="list-group list-group-flush">
+          <div class="row">
+            <div class="col">
+              <!--  <li class="list-group-item"><b>Favorite:</b> <%#= log.favorite %></li>-->
+              <li class="list-group-item"><b>Name:</b> <%= log.coffee.name %></li>
+              <li class="list-group-item"><b>Grinder:</b> <%= log.grinder.name %></li>
+              <li class="list-group-item"><b>Brewer:</b> <%= log.brewer.name %></li>
+              <li class="list-group-item"><b>Filter Paper:</b> <%= log.filter_paper %></li>
+              <li class="list-group-item"><b>Dosage:</b> <%= log.dosage %> grams</li>
+              <li class="list-group-item"><b>Grind Size:</b> <%= log.grind_size%></li>
+            </div>
+            <div class="col">
+              <li class="list-group-item"><b>Temperature:</b> <%= log.water_temperature %>°F</li>
+              <li class="list-group-item"><b>Water Type:</b> <%= log.water_type %></li>
+              <li class="list-group-item"><b>Bloom Time:</b> <%= log.bloom_time_seconds %> seconds</li>
+              <li class="list-group-item"><b>Bloom Water:</b> <%= log.bloom_water %> grams</li>
+              <li class="list-group-item"><b>Total Water:</b> <%= log.total_water %> grams</li>
+              <li class="list-group-item"><b>Brew Time:</b> <%= log.brew_time_seconds %> seconds</li>
+            </div>
+          </div>
+        </ul>
+
+        <div class="d-grid gap-2 col-6 mx-auto mt-3 mb-3">
+          <%= link_to "Edit this log", edit_log_path(log), class: "btn btn-primary text-white", type: "button" %>
+        </div>
       </div>
     </div>
-  </div>
