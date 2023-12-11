@@ -33,28 +33,23 @@
     </div>
 
     <div>
-      <%= form.label :notes, style: "display: block" %>
-      <%= form.text_area :notes %>
-    </div>
-
-    <div>
       <%= form.label :filter_paper, style: "display: block" %>
-      <%= form.text_field :filter_paper %>
+      <%= form.text_field :filter_paper, placeholder: "abaca, sibarist, hario" %>
     </div>
 
     <div>
       <%= form.label :dosage, style: "display: block" %>
-      <%= form.number_field :dosage %>
+      <%= form.number_field :dosage, placeholder: "in grams" %>
     </div>
 
     <div>
       <%= form.label :water_temperature, style: "display: block" %>
-      <%= form.number_field :water_temperature %>
+      <%= form.number_field :water_temperature, placeholder: "fahrenheit" %>
     </div>
 
     <div>
       <%= form.label :water_type, style: "display: block" %>
-      <%= form.text_field :water_type %>
+      <%= form.text_field :water_type, placeholder: "Tap, Spring, Holy" %>
     </div>
 
     <div>
@@ -79,12 +74,12 @@
 
     <div>
       <%= form.label :bloom_water, style: "display: block" %>
-      <%= form.number_field :bloom_water %>
+      <%= form.number_field :bloom_water, placeholder: "in grams" %>
     </div>
 
     <div>
       <%= form.label :total_water, style: "display: block" %>
-      <%= form.number_field :total_water %>
+      <%= form.number_field :total_water, placeholder: "in grams" %>
     </div>
 
     <div>
@@ -95,6 +90,11 @@
     <div>
       <%= form.label :rating, style: "display: block" %>
       <%= form.number_field :rating %>
+    </div>
+
+    <div>
+      <%= form.label :notes, style: "display: block" %>
+      <%= form.text_area :notes %>
     </div>
 
     <%= form_with(model: log, class: "d-inline-block", data: { remote: true }) do |form| %>
@@ -110,6 +110,8 @@
         Like
       <% end %>
     <% end %>
+
+    <br>
 
     <div class="actions">
       <%= form.submit %>

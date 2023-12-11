@@ -18,7 +18,9 @@ class LogsController < ApplicationController
 
   def new
     @log = Log.new
+    @log.date_time = Time.current
     authorize @log
+    
   end
 
   def edit
