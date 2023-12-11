@@ -14,8 +14,6 @@ class BrewersController < ApplicationController
     authorize @brewer
   end
 
-  private
-
   def set_user
     @user = current_user
   end
@@ -71,7 +69,6 @@ class BrewersController < ApplicationController
     end
   end
 
-  private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_brewer

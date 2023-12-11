@@ -14,8 +14,6 @@ class CoffeesController < ApplicationController
     authorize @coffee
   end
 
-  private
-
   def set_user
     @user = current_user
   end
@@ -70,8 +68,6 @@ class CoffeesController < ApplicationController
       redirect_back(fallback_location: root_url, notice: "Not your coffee.")
     end
   end
-
-  private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_coffee

@@ -14,7 +14,6 @@ class GrindersController < ApplicationController
     authorize @grinder
   end
 
-  private
 
   def set_user
     @user = current_user
@@ -23,10 +22,12 @@ class GrindersController < ApplicationController
   # GET /grinders/new
   def new
     @grinder = Grinder.new
+    authorize @grinder
   end
 
   # GET /grinders/1/edit
   def edit
+    authorize @grinder
   end
 
   # POST /grinders or /grinders.json
@@ -70,8 +71,6 @@ class GrindersController < ApplicationController
       redirect_back(fallback_location: root_url, notice: "Not your grinder.")
     end
   end
-
-  private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_grinder
