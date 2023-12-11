@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :logs, except: [:show] do
+  resources :logs, except: [:landing] do
     resources :brewers
     resources :grinders
     resources :coffees

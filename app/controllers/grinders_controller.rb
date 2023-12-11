@@ -5,7 +5,7 @@ class GrindersController < ApplicationController
   # GET /grinders or /grinders.json
   def index
     @grinders = policy_scope(Grinder)
-    verify_policy_scoped 
+    verify_policy_scoped
   end
 
   # GET /grinders/1 or /grinders/1.json
@@ -13,7 +13,6 @@ class GrindersController < ApplicationController
     @grinder = Grinder.find(params[:id])
     authorize @grinder
   end
-
 
   def set_user
     @user = current_user
@@ -36,8 +35,9 @@ class GrindersController < ApplicationController
 
     respond_to do |format|
       if @grinder.save
-        format.html { redirect_to grinder_url(@grinder), notice: "Grinder was successfully created." }
+        format.html { redirect_to grinders_path, notice: "Grinder was successfully created." }
         format.json { render :show, status: :created, location: @grinder }
+
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @grinder.errors, status: :unprocessable_entity }

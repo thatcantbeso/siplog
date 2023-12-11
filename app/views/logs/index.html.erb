@@ -4,11 +4,10 @@
   <%= link_to "New log", new_log_path %>
 </div>
 
-<div id="logs">
+<div class="row row-cols-1 row-cols-md-2 m-2 g-4">
   <% @logs.each do |log| %>
     <% if current_user == log.owner %>
       <%= render log %>
     <% end %>
   <% end %>
-</div>
- 
+ </div>
