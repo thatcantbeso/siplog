@@ -12,8 +12,8 @@
   <% end %>
 
   <div>
-    <%= form.label :owner_id, style: "display: block" %>
-    <%= form.number_field :owner_id %>
+    <%= form.label :owner_id, style: "display: none" %>
+    <%= form.number_field :owner_id, value: current_user.id, readonly: true, style: "display: none" %>
   </div>
 
   <div>

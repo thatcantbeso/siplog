@@ -3,6 +3,8 @@
 <%= render "form", coffee: @coffee %>
 
 <br>
+<%= button_to "Destroy this coffee", @coffee, method: :delete %>
+<br>
 
 <div>
   <%= link_to "Show this coffee", @coffee %> |

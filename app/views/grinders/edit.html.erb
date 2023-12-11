@@ -3,6 +3,8 @@
 <%= render "form", grinder: @grinder %>
 
 <br>
+<%= button_to "Destroy this grinder", @grinder, method: :delete %>
+<br>
 
 <div>
   <%= link_to "Back to grinders", grinders_path %>

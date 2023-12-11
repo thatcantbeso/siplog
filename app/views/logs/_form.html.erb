@@ -13,8 +13,8 @@
     <% end %>
 
     <div>
-      <%= form.hidden_field :owner_id, style: "display: block" %>
-      <%= form.number_field :owner_id %>
+      <%= form.label :owner_id, style: "display: none" %>
+      <%= form.number_field :owner_id, value: current_user.id, readonly: true, style: "display: none" %>
     </div>
 
     <div>
@@ -98,9 +98,8 @@
     </div>
 
     <%= form_with(model: log, class: "d-inline-block", data: { remote: true }) do |form| %>
-      
+
       <% form.button class: "btn btn-link link-underline link-underline-opacity-0 link-underline-opacity-100-hover" do %>
-        
 
         <!--  <div>-->
         <%#= form.label :favorite, style: "display: block" %>
