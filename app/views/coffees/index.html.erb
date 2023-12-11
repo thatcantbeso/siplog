@@ -5,7 +5,6 @@
 <%= link_to "New coffee", new_coffee_path %>
 <br>
 
-
 <div id="coffees">
   <% @coffees.each do |coffee| %>
     <% if current_user == coffee.owner %>

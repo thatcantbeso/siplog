@@ -1,0 +1,20 @@
+<div class="col">
+  <div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <li class="list-group-item"><b>Name:</b> <%= grinder.name %></li>
+    </div>
+    <ul class="list-group list-group-flush">
+      <div class="row">
+        <div class="col">
+          <li class="list-group-item"><b>Brand:</b> <%= grinder.brand %></li>
+          <li class="list-group-item"><b>Power:</b> <%= grinder.power %></li>
+          <li class="list-group-item"><b>Burr type:</b> <%= grinder.burr_type %></li>
+          <li class="list-group-item"><b>Burr:</b> <%= grinder.burr %></li>
+        </div>
+      </div>
+    </ul>
+    <div class="d-grid gap-2 col-6 mx-auto mt-2 mb-2">
+      <%= link_to "Edit this grinder", edit_grinder_path(grinder), class: "btn btn-primary text-white", type: "button" %>
+    </div>
+  </div>
+</div>

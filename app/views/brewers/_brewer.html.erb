@@ -1,27 +1,19 @@
-<div id="<%= dom_id brewer %>">
-  <p>
-    <strong>Owner:</strong>
-    <%= brewer.owner_id %>
-  </p>
-
-  <p>
-    <strong>Brand:</strong>
-    <%= brewer.brand %>
-  </p>
-
-  <p>
-    <strong>Name:</strong>
-    <%= brewer.name %>
-  </p>
-
-  <p>
-    <strong>Material:</strong>
-    <%= brewer.material %>
-  </p>
-
-  <p>
-    <strong>Geometry:</strong>
-    <%= brewer.geometry %>
-  </p>
-
+<div class="col">
+  <div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <li class="list-group-item"><b>Name:</b> <%= brewer.name %></li>
+    </div>
+    <ul class="list-group list-group-flush">
+      <div class="row">
+        <div class="col">
+          <li class="list-group-item"><b>Brand:</b> <%= brewer.brand %></li>
+          <li class="list-group-item"><b>Material:</b> <%= brewer.material %></li>
+          <li class="list-group-item"><b>Geometry:</b> <%= brewer.geometry %></li>
+        </div>
+      </div>
+    </ul>
+    <div class="d-grid gap-2 col-6 mx-auto mt-2 mb-2">
+      <%= link_to "Edit this brewer", edit_brewer_path(brewer), class: "btn btn-primary text-white", type: "button" %>
+    </div>
+  </div>
 </div>

@@ -4,14 +4,11 @@
 
 <%= link_to "New grinder", new_grinder_path %>
 <br>
-<br>
+
 <div id="grinders">
   <% @grinders.each do |grinder| %>
     <% if current_user == grinder.owner %>
       <%= render grinder %>
-      <p>
-        <%= link_to "Show this grinder", grinder %>
-      </p>
     <% end %>
   <% end %>
 </div>

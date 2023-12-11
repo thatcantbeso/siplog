@@ -1,0 +1,9 @@
+<div class="row row-cols-1 row-cols-md-2 m-2 g-4">
+  <% @brewers.each do |brewer| %>
+    <% if current_user == brewer.owner %>
+      <div class="col">
+        <%= render 'brewer_card', brewer: brewer %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
