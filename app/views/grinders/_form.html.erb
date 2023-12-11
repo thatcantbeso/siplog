@@ -12,8 +12,8 @@
   <% end %>
 
   <div>
-    <%= form.label :owner_id, style: "display: block" %>
-    <%= form.number_field :owner_id %>
+ <%= form.label :owner_id, style: "display: none" %>
+    <%= form.number_field :owner_id, value: current_user.id, readonly: true, style: "display: none" %>
   </div>
 
   <div>
@@ -28,18 +28,20 @@
 
   <div>
     <%= form.label :power, style: "display: block" %>
-    <%= form.text_field :power %>
+    <%= form.text_field :power, placeholder: "Electric, Manual" %>
   </div>
 
   <div>
     <%= form.label :burr_type, style: "display: block" %>
-    <%= form.text_field :burr_type %>
+    <%= form.text_field :burr_type, placeholder: "Conical, Flat" %>
   </div>
 
   <div>
     <%= form.label :burr, style: "display: block" %>
-    <%= form.text_field :burr %>
+    <%= form.text_field :burr, placeholder: "DLC, Stock, SSP" %>
   </div>
+
+<br>
 
   <div>
     <%= form.submit %>

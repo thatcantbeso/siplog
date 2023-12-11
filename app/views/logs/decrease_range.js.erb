@@ -1,0 +1,11 @@
+var currentRating = $("#currentRatingDisplay");
+var newCurrentRating = <%= @log.rating %>;
+
+currentRating.text(newCurrentRating);
+
+var currentCoffeeRating = <%= @log.rating %>; 
+
+var currentCoffeeNumber = $("#currentCoffeeNumber<%= @log.id %>");
+var newCurrentCoffeeNumber = <%= @log.rating %>;
+
+currentCoffeeNumber.text(newCurrentCoffeeNumber);

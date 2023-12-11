@@ -9,9 +9,6 @@
   <% @brewers.each do |brewer| %>
     <% if current_user == brewer.owner %>
       <%= render brewer %>
-      <p>
-        <%= link_to "Show this brewer", brewer %>
-      </p>
     <% end %>
   <% end %>
 </div>

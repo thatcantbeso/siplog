@@ -12,8 +12,8 @@
   <% end %>
 
   <div>
-    <%= form.label :owner_id, style: "display: block" %>
-    <%= form.number_field :owner_id %>
+    <%= form.label :owner_id, style: "display: none" %>
+    <%= form.number_field :owner_id, value: current_user.id, readonly: true, style: "display: none" %>
   </div>
 
   <div>
@@ -28,13 +28,15 @@
 
   <div>
     <%= form.label :material, style: "display: block" %>
-    <%= form.text_field :material %>
+    <%= form.text_field :material, placeholder: "Plastic, Metal" %>
   </div>
 
   <div>
     <%= form.label :geometry, style: "display: block" %>
-    <%= form.text_field :geometry %>
+    <%= form.text_field :geometry, placeholder: "Conical, Flat"  %>
   </div>
+
+<br>
 
   <div>
     <%= form.submit %>

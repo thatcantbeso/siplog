@@ -1,32 +1,9 @@
-<div id="<%= dom_id grinder %>">
-  <p>
-    <strong>Owner:</strong>
-    <%= grinder.owner_id %>
-  </p>
-
-  <p>
-    <strong>Brand:</strong>
-    <%= grinder.brand %>
-  </p>
-
-  <p>
-    <strong>Name:</strong>
-    <%= grinder.name %>
-  </p>
-
-  <p>
-    <strong>Power:</strong>
-    <%= grinder.power %>
-  </p>
-
-  <p>
-    <strong>Burr type:</strong>
-    <%= grinder.burr_type %>
-  </p>
-
-  <p>
-    <strong>Burr:</strong>
-    <%= grinder.burr %>
-  </p>
-
+<div class="row row-cols-1 row-cols-md-2 m-2 g-4">
+  <% @grinders.each do |grinder| %>
+    <% if current_user == grinder.owner %>
+      <div class="col">
+        <%= render 'grinder_card', grinder: grinder %>
+      </div>
+    <% end %>
+  <% end %>
 </div>

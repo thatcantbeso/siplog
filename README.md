@@ -28,7 +28,7 @@ Unorganized journals are clumsy, easy to lose/misplace, and not intuitive.
 - coffee_id
 - grinder_id
 - brewer_id
-- photo_id
+- photo
 - notes
 - filter_paper
 - dosage

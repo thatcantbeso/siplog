@@ -1,0 +1,33 @@
+  <div class="col">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center">
+            <li class="list-group-item"><b>Name:</b> <%= coffee.name %></li>
+      </div>
+      <ul class="list-group list-group-flush">
+        <div class="row">
+          <div class="col">
+            <li class="list-group-item"><b>Owner:</b> <%= coffee.owner_id %></li>
+            <li class="list-group-item"><b>Species:</b> <%= coffee.species %></li>
+            <li class="list-group-item"><b>Varietal:</b> <%= coffee.varietal %></li>
+            <li class="list-group-item"><b>Process:</b> <%= coffee.process %></li>
+            <li class="list-group-item"><b>Elevation:</b> <%= coffee.elevation %></li>
+            <li class="list-group-item"><b>Region:</b> <%= coffee.region %></li>
+            <li class="list-group-item"><b>Subregion:</b> <%= coffee.subregion %></li>
+            <li class="list-group-item"><b>Roast level:</b> <%= coffee.roast_level %></li>
+          </div>
+          <div class="col">
+            <li class="list-group-item"><b>Roast date:</b> <%= coffee.roast_date %></li>
+            <li class="list-group-item"><b>Cup score:</b> <%= coffee.cup_score %></li>
+            <li class="list-group-item"><b>Roaster:</b> <%= coffee.roaster %></li>
+            <li class="list-group-item"><b>Producer:</b> <%= coffee.producer %></li>
+            <li class="list-group-item"><b>Favorite:</b> <%= coffee.favorite %></li>
+            <li class="list-group-item"><b>Tasting notes:</b> <%= coffee.tasting_notes %></li>
+            <li class="list-group-item"><b>Notes:</b> <%= coffee.notes %></li>
+          </div>
+        </div>
+      </ul>
+      <div class="d-grid gap-2 col-6 mx-auto mt-2 mb-2">
+        <%= link_to "Edit this coffee", edit_coffee_path(coffee), class: "btn btn-primary text-white", type: "button" %>
+      </div>
+    </div>
+  </div>

@@ -3,6 +3,8 @@
 <%= render "form", log: @log %>
 
 <br>
+<%= button_to "Destroy this log", @log, method: :delete %>
+<br>
 
 <div>
   <%= link_to "Show this log", @log %> |

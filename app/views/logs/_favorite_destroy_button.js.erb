@@ -1,0 +1,8 @@
+console.log("Favorite destroyed");
+
+var existingFavorites = $("#<%= log_id(@log.favorite) %>_favorites");
+var updatedFavorites = $("<%= j(render 'logs/favorite', log: @log.favorite) %>");
+
+existingFavorites.replaceWith(updatedFavorites);
+icon.addClass("fa-beat-fade");
+icon.css("--fa-animation-iteration-count", "1");

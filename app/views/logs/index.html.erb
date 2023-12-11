@@ -1,5 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Logs</h1>
 
 <div>
@@ -8,12 +6,9 @@
 
 <div id="logs">
   <% @logs.each do |log| %>
-
     <% if current_user == log.owner %>
       <%= render log %>
-      <p>
-        <%= link_to "Show this log", log %>
-      </p>
     <% end %>
   <% end %>
 </div>
+ 

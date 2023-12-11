@@ -12,23 +12,23 @@
   <% end %>
 
   <div>
-    <%= form.label :owner_id, style: "display: block" %>
-    <%= form.number_field :owner_id %>
+   <%= form.label :owner_id, style: "display: none" %>
+    <%= form.number_field :owner_id, value: current_user.id, readonly: true, style: "display: none" %>
   </div>
 
   <div>
     <%= form.label :species, style: "display: block" %>
-    <%= form.text_field :species %>
+    <%= form.text_field :species, placeholder: "Arabica, Robusta" %>
   </div>
 
   <div>
     <%= form.label :varietal, style: "display: block" %>
-    <%= form.text_field :varietal %>
+    <%= form.text_field :varietal, placeholder: "Typica, Bourbon, Geisha" %>
   </div>
 
   <div>
     <%= form.label :process, style: "display: block" %>
-    <%= form.text_field :process %>
+    <%= form.text_field :process, placeholder: "Natural, Washed" %>
   </div>
 
   <div>
@@ -38,17 +38,17 @@
 
   <div>
     <%= form.label :region, style: "display: block" %>
-    <%= form.text_field :region %>
+    <%= form.text_field :region, placeholder: "Africa, Ethiopia" %>
   </div>
 
   <div>
     <%= form.label :subregion, style: "display: block" %>
-    <%= form.text_field :subregion %>
+    <%= form.text_field :subregion, placeholder: "Guji" %>
   </div>
 
   <div>
     <%= form.label :roast_level, style: "display: block" %>
-    <%= form.number_field :roast_level %>
+    <%= form.number_field :roast_level, placeholder: "How Dark?" %>
   </div>
 
   <div>
@@ -90,6 +90,8 @@
     <%= form.label :notes, style: "display: block" %>
     <%= form.text_area :notes %>
   </div>
+
+  <br>
 
   <div>
     <%= form.submit %>
