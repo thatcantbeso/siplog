@@ -17,103 +17,115 @@
       <%= form.number_field :owner_id, value: current_user.id, readonly: true, style: "display: none" %>
     </div>
 
-    <div>
-      <%= form.label :coffee_id, style: "display: block" %>
-      <%= form.number_field :coffee_id %>
-    </div>
+<div>
+  <%= form.label :coffee_id, style: "display: block" %>
+  <%= form.collection_select :coffee_id, current_user.coffees, :id, :name %>
+</div>
 
     <div>
       <%= form.label :grinder_id, style: "display: block" %>
-      <%= form.number_field :grinder_id %>
+      <%= form.number_field :grinder_id, value: current_user.grinders.first&.id %>
     </div>
 
     <div>
       <%= form.label :brewer_id, style: "display: block" %>
-      <%= form.number_field :brewer_id %>
+      <%= form.number_field :brewer_id, value: current_user.brewers.first&.id %>
     </div>
-
-    <div>
-      <%= form.label :filter_paper, style: "display: block" %>
-      <%= form.text_field :filter_paper, placeholder: "abaca, sibarist, hario" %>
-    </div>
-
-    <div>
-      <%= form.label :dosage, style: "display: block" %>
-      <%= form.number_field :dosage, placeholder: "in grams" %>
-    </div>
-
-    <div>
-      <%= form.label :water_temperature, style: "display: block" %>
-      <%= form.number_field :water_temperature, placeholder: "fahrenheit" %>
-    </div>
-
-    <div>
-      <%= form.label :water_type, style: "display: block" %>
-      <%= form.text_field :water_type, placeholder: "Tap, Spring, Holy" %>
-    </div>
-
-    <div>
-      <%= form.label :photo, style: "display: block" %>
-      <%= form.text_field :photo %>
-    </div>
-
-    <div>
-      <%= form.label :grind_size, style: "display: block" %>
-      <%= form.number_field :grind_size %>
-    </div>
-
-    <div>
-      <%= form.label :bloom_time_seconds, style: "display: block" %>
-      <%= form.number_field :bloom_time_seconds %>
-    </div>
-
-    <div>
-      <%= form.label :brew_time_seconds, style: "display: block" %>
-      <%= form.number_field :brew_time_seconds %>
-    </div>
-
-    <div>
-      <%= form.label :bloom_water, style: "display: block" %>
-      <%= form.number_field :bloom_water, placeholder: "in grams" %>
-    </div>
-
-    <div>
-      <%= form.label :total_water, style: "display: block" %>
-      <%= form.number_field :total_water, placeholder: "in grams" %>
-    </div>
-
-    <div>
-      <%= form.label :date_time, style: "display: block" %>
-      <%= form.datetime_field :date_time %>
-    </div>
-
-    <div>
-      <%= form.label :rating, style: "display: block" %>
-      <%= form.number_field :rating %>
-    </div>
-
-    <div>
-      <%= form.label :notes, style: "display: block" %>
-      <%= form.text_area :notes %>
-    </div>
-
-    <%= form_with(model: log, class: "d-inline-block", data: { remote: true }) do |form| %>
-
-      <% form.button class: "btn btn-link link-underline link-underline-opacity-0 link-underline-opacity-100-hover" do %>
-
-        <!--  <div>-->
-        <%#= form.label :favorite, style: "display: block" %>
-        <%#= form.check_box :favorite %>
-        <!--  </div>-->
-
-        <i id="<% log.favorite %>_favorites_icon" class="fa-solid fa-mug-hot fa-shake fa-xl" style="color: #f0d000;"></i>
-        Like
-      <% end %>
-    <% end %>
 
     <br>
 
-    <div class="actions">
-      <%= form.submit %>
-    </div>
-  <% end %>
+    <div>
+      <input type="file" id="photo" name="photo" class="form-control">
+      <form action="/create_photo" method="post" class="form-horizontal" enctype="multipart/form-data">
+
+        <%# form_for(:post) do |post_form| %>
+          <%# post_form.hidden_field(:photo_cache) %>
+          <%# post_form.file_field(:photo) %>
+
+        </div>
+
+        <div>
+          <%= form.label :filter_paper, style: "display: block" %>
+          <%= form.text_field :filter_paper, placeholder: "abaca, sibarist, hario" %>
+        </div>
+
+        <div>
+          <%= form.label :dosage, style: "display: block" %>
+          <%= form.number_field :dosage, placeholder: "in grams" %>
+        </div>
+
+        <div>
+          <%= form.label :water_temperature, style: "display: block" %>
+          <%= form.number_field :water_temperature, placeholder: "fahrenheit" %>
+        </div>
+
+        <div>
+          <%= form.label :water_type, style: "display: block" %>
+          <%= form.text_field :water_type, placeholder: "Tap, Spring, Holy" %>
+        </div>
+
+        <div>
+          <%= form.label :photo, style: "display: block" %>
+          <%= form.text_field :photo %>
+        </div>
+
+        <div>
+          <%= form.label :grind_size, style: "display: block" %>
+          <%= form.number_field :grind_size %>
+        </div>
+
+        <div>
+          <%= form.label :bloom_time_seconds, style: "display: block" %>
+          <%= form.number_field :bloom_time_seconds %>
+        </div>
+
+        <div>
+          <%= form.label :brew_time_seconds, style: "display: block" %>
+          <%= form.number_field :brew_time_seconds %>
+        </div>
+
+        <div>
+          <%= form.label :bloom_water, style: "display: block" %>
+          <%= form.number_field :bloom_water, placeholder: "in grams" %>
+        </div>
+
+        <div>
+          <%= form.label :total_water, style: "display: block" %>
+          <%= form.number_field :total_water, placeholder: "in grams" %>
+        </div>
+
+        <div>
+          <%= form.label :date_time, style: "display: block" %>
+          <%= form.datetime_field :date_time %>
+        </div>
+
+        <div>
+          <%= form.label :rating, style: "display: block" %>
+          <%= form.number_field :rating %>
+        </div>
+
+        <div>
+          <%= form.label :notes, style: "display: block" %>
+          <%= form.text_area :notes %>
+        </div>
+
+              <div>
+            <%= form.label :favorite, style: "display: block" %>
+            <%= form.check_box :favorite %>
+              </div>
+<!---->
+        <%#= form_with(model: log, class: "d-inline-block", data: { remote: true }) do |form| %>
+<!---->
+          <%# form.button class: "btn btn-link link-underline link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+
+<!--            <i id="<%# log.favorite %>_favorites_icon" class="fa-solid fa-mug-hot fa-shake fa-xl" style="color: #f0d000;"></i>
+            Like-->
+          <%# end %>
+        <%# end %>
+<!---->
+        <br>
+
+        <div class="actions">
+          <%= form.submit %>
+        </div>
+      <% end %>

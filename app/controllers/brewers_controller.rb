@@ -33,7 +33,7 @@ class BrewersController < ApplicationController
 
     respond_to do |format|
       if @brewer.save
-        format.html { redirect_to brewer_url(@brewer), notice: "Brewer was successfully created." }
+        format.html { redirect_to brewers_path, notice: "Brewer was successfully created." }
         format.json { render :show, status: :created, location: @brewer }
       else
         format.html { render :new, status: :unprocessable_entity }
