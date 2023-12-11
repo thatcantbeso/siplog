@@ -5,6 +5,9 @@ class LogsController < ApplicationController
   after_action :verify_authorized, except: %i[index]
   after_action :verify_policy_scoped, only: %i[index]
 
+  def landing
+  end
+
   def index
     @user = current_user
     @logs = policy_scope(Log)
@@ -20,7 +23,6 @@ class LogsController < ApplicationController
     @log = Log.new
     @log.date_time = Time.current
     authorize @log
-    
   end
 
   def edit
