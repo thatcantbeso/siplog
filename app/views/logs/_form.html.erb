@@ -1,107 +1,109 @@
   <%= form_with(model: log, class: "d-inline-block", data: {remote: true}) do |form| %>
 
-    <% if log.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(log.errors.count, "error") %> prohibited this log from being saved:</h2>
-        <ul>
-          <% log.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div>
-      <%= form.label :owner_id, style: "display: none" %>
-      <%= form.number_field :owner_id, value: current_user.id, readonly: true, style: "display: none" %>
-    </div>
-
-    <div>
-      <%= form.label :coffee_id, style: "display: block" %>
-      <%= form.collection_select :coffee_id, current_user.coffees, :id, :name %>
-    </div>
-
-    <div>
-      <%= form.label :grinder_id, style: "display: block" %>
-      <%= form.number_field :grinder_id, value: current_user.grinders.first&.id %>
-    </div>
-
-    <div>
-      <%= form.label :brewer_id, style: "display: block" %>
-      <%= form.number_field :brewer_id, value: current_user.brewers.first&.id %>
-    </div>
-
-    <div>
-      <%= form.label :photo, class: 'form-label mt-4' %>
-      <%= form.file_field :photo, class: 'form-control' %>
-    </div>
-
-    <div>
-      <%= form.label :filter_paper, style: "display: block" %>
-      <%= form.text_field :filter_paper, placeholder: "abaca, sibarist, hario" %>
-    </div>
-
-    <div>
-      <%= form.label :dosage, style: "display: block" %>
-      <%= form.number_field :dosage, placeholder: "in grams" %>
-    </div>
-
-    <div>
-      <%= form.label :water_temperature, style: "display: block" %>
-      <%= form.number_field :water_temperature, placeholder: "fahrenheit" %>
-    </div>
-
-    <div>
-      <%= form.label :water_type, style: "display: block" %>
-      <%= form.text_field :water_type, placeholder: "Tap, Spring, Holy" %>
-    </div>
-
-    <div>
-      <%= form.label :grind_size, style: "display: block" %>
-      <%= form.number_field :grind_size %>
-    </div>
-
-    <div>
-      <%= form.label :bloom_time_seconds, style: "display: block" %>
-      <%= form.number_field :bloom_time_seconds %>
-    </div>
-
-    <div>
-      <%= form.label :brew_time_seconds, style: "display: block" %>
-      <%= form.number_field :brew_time_seconds %>
-    </div>
-
-    <div>
-      <%= form.label :bloom_water, style: "display: block" %>
-      <%= form.number_field :bloom_water, placeholder: "in grams" %>
-    </div>
-
-    <div>
-      <%= form.label :total_water, style: "display: block" %>
-      <%= form.number_field :total_water, placeholder: "in grams" %>
-    </div>
-
-    <div>
-      <%= form.label :date_time, style: "display: block" %>
-      <%= form.datetime_field :date_time %>
-    </div>
-
-    <div>
-      <%= form.label :rating, style: "display: block" %>
-      <%= form.number_field :rating %>
-    </div>
-
-    <div>
-      <%= form.label :notes, style: "display: block" %>
-      <%= form.text_area :notes %>
-    </div>
-
-    <div>
-      <%= form.label :favorite, style: "display: block" %>
-      <%= form.check_box :favorite %>
-    </div>
-
-          <div class="actions">
-            <%= form.submit %>
-          </div>
+  <% if log.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(log.errors.count, "error") %> prohibited this log from being saved:</h2>
+      <ul>
+        <% log.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :owner_id, style: "display: none" %>
+    <%= form.number_field :owner_id, value: current_user.id, readonly: true, style: "display: none" %>
+  </div>
+
+  <div>
+    <%= form.label :coffee_id, style: "display: block", class: 'form-label' %>
+    <%= form.collection_select :coffee_id, current_user.coffees, :id, :name, { prompt: 'Select a coffee' }, class: 'form-select' %>
+  </div>
+
+  <div>
+    <%= form.label :grinder_id, style: "display: block", class: 'form-label' %>
+    <%= form.collection_select :grinder_id, current_user.grinders, :id, :name, { prompt: 'Select a grinder' }, class: 'form-select' %>
+  </div>
+
+  <div>
+    <%= form.label :brewer_id, style: "display: block", class: 'form-label' %>
+    <%= form.collection_select :brewer_id, current_user.brewers, :id, :name, { prompt: 'Select a brewer' }, class: 'form-select' %>
+  </div>
+
+  <div>
+    <%= form.label :photo, class: 'form-label mt-4' %>
+    <%= form.file_field :photo, class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= form.label :filter_paper, style: "display: block" %>
+    <%= form.text_field :filter_paper, placeholder: "abaca, sibarist, hario" %>
+  </div>
+
+  <div>
+    <%= form.label :dosage, style: "display: block" %>
+    <%= form.number_field :dosage, placeholder: "in grams" %>
+  </div>
+
+  <div>
+    <%= form.label :water_temperature, style: "display: block" %>
+    <%= form.number_field :water_temperature, placeholder: "fahrenheit" %>
+  </div>
+
+  <div>
+    <%= form.label :water_type, style: "display: block" %>
+    <%= form.text_field :water_type, placeholder: "Tap, Spring, Holy" %>
+  </div>
+
+  <div>
+    <%= form.label :grind_size, style: "display: block" %>
+    <%= form.number_field :grind_size %>
+  </div>
+
+  <div>
+    <%= form.label :bloom_time_seconds, style: "display: block" %>
+    <%= form.number_field :bloom_time_seconds %>
+  </div>
+
+  <div>
+    <%= form.label :brew_time_seconds, style: "display: block" %>
+    <%= form.number_field :brew_time_seconds %>
+  </div>
+
+  <div>
+    <%= form.label :bloom_water, style: "display: block" %>
+    <%= form.number_field :bloom_water, placeholder: "in grams" %>
+  </div>
+
+  <div>
+    <%= form.label :total_water, style: "display: block" %>
+    <%= form.number_field :total_water, placeholder: "in grams" %>
+  </div>
+
+  <div>
+    <%= form.label :date_time, style: "display: block" %>
+    <%= form.datetime_field :date_time %>
+  </div>
+
+  <div>
+    <%= form.label :rating, style: "display: block" %>
+    <%= form.number_field :rating %>
+  </div>
+
+  <div>
+    <%= form.label :notes, style: "display: block" %>
+    <%= form.text_area :notes %>
+  </div>
+
+  <div class="btn-group-toggle" data-toggle="buttons">
+    <%= form.label :favorite, class: "btn btn-outline-primary active" do %>
+      <%= form.check_box :favorite, autocomplete: "off" %>
+      Favorite
+    <% end %>
+  </div>
+  <br>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

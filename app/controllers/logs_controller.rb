@@ -5,9 +5,6 @@ class LogsController < ApplicationController
   after_action :verify_policy_scoped, only: %i[index]
   before_action {authorize (@log || Log) }
 
-  def landing
-  end
-
   def index
     @user = current_user
     @logs = policy_scope(Log)
@@ -29,7 +26,6 @@ class LogsController < ApplicationController
     authorize @log
   end
 
-  # POST /logs or /logs.json
   def create
     @log = Log.new(log_params)
     authorize @log
@@ -45,7 +41,6 @@ class LogsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /logs/1 or /logs/1.json
   def update
     authorize @log
     respond_to do |format|
@@ -57,11 +52,11 @@ class LogsController < ApplicationController
         format.json { render json: @log.errors, status: :unprocessable_entity }
       end
     end
-    authorize @log
   end
 
   # DELETE /logs/1 or /logs/1.json
   def destroy
+    authorize @log
     if current_user == @log.owner
       @log.destroy
       respond_to do |format|
@@ -91,8 +86,6 @@ class LogsController < ApplicationController
       format.js
     end
   end
-
-  private
 
   def set_log
     @log = Log.find(params[:id])

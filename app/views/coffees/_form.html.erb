@@ -12,8 +12,13 @@
   <% end %>
 
   <div>
-   <%= form.label :owner_id, style: "display: none" %>
+    <%= form.label :owner_id, style: "display: none" %>
     <%= form.number_field :owner_id, value: current_user.id, readonly: true, style: "display: none" %>
+  </div>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name, placeholder: "Name on bag?" %>
   </div>
 
   <div>
@@ -64,11 +69,6 @@
   <div>
     <%= form.label :tasting_notes, style: "display: block" %>
     <%= form.text_field :tasting_notes %>
-  </div>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
   </div>
 
   <div>
