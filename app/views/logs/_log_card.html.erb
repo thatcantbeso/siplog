@@ -62,7 +62,17 @@
               <li class="list-group-item"><b>Bloom Time:</b> <%= log.bloom_time_seconds %> seconds</li>
               <li class="list-group-item"><b>Bloom Water:</b> <%= log.bloom_water %> grams</li>
               <li class="list-group-item"><b>Total Water:</b> <%= log.total_water %> grams</li>
-              <li class="list-group-item"><b>Brew Time:</b> <%= log.brew_time_seconds %> seconds</li>
+<% if log.brew_time_seconds.present? %>
+  <% total_seconds = log.brew_time_seconds %>
+  <% minutes = total_seconds / 60 %>
+  <% seconds = total_seconds % 60 %>
+
+  <li class="list-group-item">
+    <b>Brew Time:</b>
+    <%= "#{minutes}:#{seconds} minutes" %>
+  </li>
+<% end %>
+
             </div>
           </div>
         </ul>
