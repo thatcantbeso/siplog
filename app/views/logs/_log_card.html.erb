@@ -1,7 +1,11 @@
 <div class="col">
   <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
-      <small class="text-body-secondary">Made on <%= log.date_time.strftime("%D at %I:%M%p") %></small>
+<small class="text-body-secondary">
+  Made on <%= log.date_time&.strftime("%D at %I:%M%p") %>
+</small>
+
+      
       <% if log.favorite %>
         <button class="btn btn-link favorite-button"><i class="fa-solid fa-mug-hot fa-shake fa-xl" style="color: #f0d000;"></i></button>
       <% end %>
@@ -62,16 +66,16 @@
               <li class="list-group-item"><b>Bloom Time:</b> <%= log.bloom_time_seconds %> seconds</li>
               <li class="list-group-item"><b>Bloom Water:</b> <%= log.bloom_water %> grams</li>
               <li class="list-group-item"><b>Total Water:</b> <%= log.total_water %> grams</li>
-<% if log.brew_time_seconds.present? %>
-  <% total_seconds = log.brew_time_seconds %>
-  <% minutes = total_seconds / 60 %>
-  <% seconds = total_seconds % 60 %>
+              <% if log.brew_time_seconds.present? %>
+                <% total_seconds = log.brew_time_seconds %>
+                <% minutes = total_seconds / 60 %>
+                <% seconds = total_seconds % 60 %>
 
-  <li class="list-group-item">
-    <b>Brew Time:</b>
-    <%= "#{minutes}:#{seconds} minutes" %>
-  </li>
-<% end %>
+                <li class="list-group-item">
+                  <b>Brew Time:</b>
+                  <%= "#{minutes}:#{seconds} minutes" %>
+                </li>
+              <% end %>
 
             </div>
           </div>

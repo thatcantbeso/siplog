@@ -9,6 +9,8 @@ class LogsController < ApplicationController
     @user = current_user
     @logs = policy_scope(Log)
     verify_policy_scoped
+    @logs = Log.all
+    @log = Log.new
   end
 
   # def show
