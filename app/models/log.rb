@@ -25,6 +25,7 @@
 #  owner_id           :integer
 #
 class Log < ApplicationRecord
+  mount_uploader :photo, PhotoUploader
   belongs_to :owner, required: true, class_name: "User", foreign_key: "owner_id"
   belongs_to :grinder, required: true, class_name: "Grinder", foreign_key: "grinder_id"
   belongs_to :coffee, required: true, class_name: "Coffee", foreign_key: "coffee_id"
