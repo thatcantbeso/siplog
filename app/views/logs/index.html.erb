@@ -1,7 +1,8 @@
 <h1>Logs</h1>
 
 <div>
-  <%= link_to "New log", new_log_path %>
+<%= render 'form', log: @log %>
+
 </div>
 
 <div class="row row-cols-1 row-cols-md-2 m-2 g-4">

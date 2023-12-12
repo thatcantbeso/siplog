@@ -1,17 +1,21 @@
 <div class="col">
   <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
-      <small class="text-body-secondary">Made on <%= log.date_time.strftime("%D at %I:%M%p") %></small>
+<small class="text-body-secondary">
+  Made on <%= log.date_time&.strftime("%D at %I:%M%p") %>
+</small>
+
+      
       <% if log.favorite %>
         <button class="btn btn-link favorite-button"><i class="fa-solid fa-mug-hot fa-shake fa-xl" style="color: #f0d000;"></i></button>
       <% end %>
 
-        <%#= form_with(model: log, class: "d-inline-block", data: { remote: true }) do |form| %>
-          <%# form.button class: "btn btn-link link-underline link-underline-opacity-0 link-underline-opacity-100-hover" do %>
-            <!--
+      <%#= form_with(model: log, class: "d-inline-block", data: { remote: true }) do |form| %>
+        <%# form.button class: "btn btn-link link-underline link-underline-opacity-0 link-underline-opacity-100-hover" do %>
+          <!--
             <i id="<%# log.favorite %>_favorites_icon" class="fa-solid fa-mug-hot fa-shake fa-xl" style="color: #f0d000;"></i>
           <%# end %>-->
-            <%#end%>
+          <%#end%>
 
         </div>
 
@@ -33,23 +37,22 @@
               <%= form.range_field :rating, in: 1..100, class: "form-range w-100" %>
             </div>
 
+            <!-- <div class="d-flex">-->
+            <%#= link_to "<i class='fas fa-plus'></i>".html_safe, increase_range_log_path(log), method: :post, remote: true, class: "btn btn-success me-2", id: "increaseRangeBtn" %>
+            <%#= link_to "<i class='fas fa-minus'></i>".html_safe, decrease_range_log_path(log), method: :post, remote: true, class: "btn btn-danger me-2", id: "decreaseRangeBtn" %>
+            <!--              </div>-->
             <li class="list-group-item d-flex justify-content-between align-items-center">
-              <div class="d-flex">
-                <%= link_to "<i class='fas fa-plus'></i>".html_safe, increase_range_log_path(log), method: :post, remote: true, class: "btn btn-success me-2", id: "increaseRangeBtn" %>
-                <%= link_to "<i class='fas fa-minus'></i>".html_safe, decrease_range_log_path(log), method: :post, remote: true, class: "btn btn-danger me-2", id: "decreaseRangeBtn" %>
-              </div>
-              <div class="actions">
+              <div class=" actions ml-auto">
                 <%= form.submit class: "btn btn-sm btn-primary" %>
               </div>
             </li>
-
           <% end %>
+
         </ul>
 
         <ul class="list-group list-group-flush">
           <div class="row">
             <div class="col">
-              <!--  <li class="list-group-item"><b>Favorite:</b> <%#= log.favorite %></li>-->
               <li class="list-group-item"><b>Name:</b> <%= log.coffee.name %></li>
               <li class="list-group-item"><b>Grinder:</b> <%= log.grinder.name %></li>
               <li class="list-group-item"><b>Brewer:</b> <%= log.brewer.name %></li>
@@ -63,7 +66,17 @@
               <li class="list-group-item"><b>Bloom Time:</b> <%= log.bloom_time_seconds %> seconds</li>
               <li class="list-group-item"><b>Bloom Water:</b> <%= log.bloom_water %> grams</li>
               <li class="list-group-item"><b>Total Water:</b> <%= log.total_water %> grams</li>
-              <li class="list-group-item"><b>Brew Time:</b> <%= log.brew_time_seconds %> seconds</li>
+              <% if log.brew_time_seconds.present? %>
+                <% total_seconds = log.brew_time_seconds %>
+                <% minutes = total_seconds / 60 %>
+                <% seconds = total_seconds % 60 %>
+
+                <li class="list-group-item">
+                  <b>Brew Time:</b>
+                  <%= "#{minutes}:#{seconds} minutes" %>
+                </li>
+              <% end %>
+
             </div>
           </div>
         </ul>

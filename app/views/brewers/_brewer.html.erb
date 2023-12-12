@@ -1,19 +1,9 @@
-<div class="col">
-  <div class="card">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <li class="list-group-item"><b>Name:</b> <%= brewer.name %></li>
-    </div>
-    <ul class="list-group list-group-flush">
-      <div class="row">
-        <div class="col">
-          <li class="list-group-item"><b>Brand:</b> <%= brewer.brand %></li>
-          <li class="list-group-item"><b>Material:</b> <%= brewer.material %></li>
-          <li class="list-group-item"><b>Geometry:</b> <%= brewer.geometry %></li>
-        </div>
+<!--<div class="row row-cols-1 row-cols-md-2 m-2 g-4">-->
+  <%# @brewers.each do |brewer| %>
+    <%# if current_user == brewer.owner %>
+      <div class="col">
+        <%= render 'brewer_card', brewer: brewer %>
       </div>
-    </ul>
-    <div class="d-grid gap-2 col-6 mx-auto mt-2 mb-2">
-      <%= link_to "Edit this brewer", edit_brewer_path(brewer), class: "btn btn-primary text-white", type: "button" %>
-    </div>
-  </div>
-</div>
+    <%# end %>
+  <%# end %>
+<!--</div>-->

@@ -2,13 +2,14 @@ class GrindersController < ApplicationController
   before_action :set_grinder, only: %i[ show edit update destroy ]
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   after_action :verify_policy_scoped, only: %i[index]
-  # GET /grinders or /grinders.json
+  before_action {authorize (@grinder || Grinder) }
+
   def index
     @grinders = policy_scope(Grinder)
     verify_policy_scoped
   end
 
-  # GET /grinders/1 or /grinders/1.json
+
   def show
     @grinder = Grinder.find(params[:id])
     authorize @grinder
@@ -18,18 +19,18 @@ class GrindersController < ApplicationController
     @user = current_user
   end
 
-  # GET /grinders/new
+
   def new
     @grinder = Grinder.new
     authorize @grinder
   end
 
-  # GET /grinders/1/edit
+
   def edit
     authorize @grinder
   end
 
-  # POST /grinders or /grinders.json
+
   def create
     @grinder = Grinder.new(grinder_params)
 
@@ -45,11 +46,11 @@ class GrindersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /grinders/1 or /grinders/1.json
+
   def update
     respond_to do |format|
       if @grinder.update(grinder_params)
-        format.html { redirect_to grinder_url(@grinder), notice: "Grinder was successfully updated." }
+        format.html { redirect_to grinders_path, notice: "Grinder was successfully updated." }
         format.json { render :show, status: :ok, location: @grinder }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -58,7 +59,7 @@ class GrindersController < ApplicationController
     end
   end
 
-  # DELETE /grinders/1 or /grinders/1.json
+
   def destroy
     if current_user == @grinder.owner
       @grinder.destroy
@@ -72,12 +73,12 @@ class GrindersController < ApplicationController
     end
   end
 
-  # Use callbacks to share common setup or constraints between actions.
+
   def set_grinder
     @grinder = Grinder.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
+
   def grinder_params
     params.require(:grinder).permit(:owner_id, :brand, :name, :power, :burr_type, :burr)
   end

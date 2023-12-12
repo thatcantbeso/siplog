@@ -1,11 +1,10 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Coffees</h1>
 
+<div>
 <%= link_to "New coffee", new_coffee_path %>
-<br>
+</div>
 
-<div id="coffees">
+<div class="row row-cols-1 row-cols-md-2 m-2 g-4">
   <% @coffees.each do |coffee| %>
     <% if current_user == coffee.owner %>
       <%= render coffee %>

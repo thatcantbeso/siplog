@@ -2,13 +2,13 @@ class BrewersController < ApplicationController
   before_action :set_brewer, only: %i[ show edit update destroy ]
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   after_action :verify_policy_scoped, only: %i[index]
-  # GET /brewers or /brewers.json
+  before_action {authorize (@brewer || Brewer) }
+
   def index
     @brewers = policy_scope(Brewer)
     verify_policy_scoped
   end
 
-  # GET /brewers/1 or /brewers/1.json
   def show
     @brewer = Brewer.find(params[:id])
     authorize @brewer
@@ -18,16 +18,13 @@ class BrewersController < ApplicationController
     @user = current_user
   end
 
-  # GET /brewers/new
   def new
     @brewer = Brewer.new
   end
 
-  # GET /brewers/1/edit
   def edit
   end
 
-  # POST /brewers or /brewers.json
   def create
     @brewer = Brewer.new(brewer_params)
 
@@ -42,11 +39,10 @@ class BrewersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /brewers/1 or /brewers/1.json
   def update
     respond_to do |format|
       if @brewer.update(brewer_params)
-        format.html { redirect_to brewer_url(@brewer), notice: "Brewer was successfully updated." }
+        format.html { redirect_to brewers_path, notice: "Brewer was successfully updated." }
         format.json { render :show, status: :ok, location: @brewer }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,7 +51,6 @@ class BrewersController < ApplicationController
     end
   end
 
-  # DELETE /brewers/1 or /brewers/1.json
   def destroy
     if current_user == @brewer.owner
       @brewer.destroy
@@ -69,13 +64,10 @@ class BrewersController < ApplicationController
     end
   end
 
-
-  # Use callbacks to share common setup or constraints between actions.
   def set_brewer
     @brewer = Brewer.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def brewer_params
     params.require(:brewer).permit(:owner_id, :brand, :name, :material, :geometry)
   end

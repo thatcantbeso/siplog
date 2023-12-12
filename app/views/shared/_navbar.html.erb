@@ -6,45 +6,47 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" <%= link_to 'Logs', logs_path %></a>
+            <a class="nav-link active" aria-current="page" <%= link_to 'Coffees', coffees_path %></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" <%= link_to 'Coffees', coffees_path %></a>
+              <a class="nav-link active" aria-current="page" <%= link_to 'Grinders', grinders_path %></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" <%= link_to 'Grinders', grinders_path %></a>
+                <a class="nav-link active" aria-current="page" <%= link_to 'Brewers', brewers_path %></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" <%= link_to 'Brewers', brewers_path %></a>
-                  </ul>
+                  <a class="nav-link active" aria-current="page" <%= link_to 'Logs', logs_path %></a>
+                  </li>
+                </ul>
 
-                  <ul class="navbar-nav">
-                    <% if user_signed_in? %>
-                      <li class="nav-item">
-                        <%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link" %>
-                      </li>
-                      <li class="nav-item">
-                        <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
-                      </li>
+                <ul class="navbar-nav">
+                  <% if user_signed_in? %>
+                    <li class="nav-item">
+                      <%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link" %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
+                    </li>
 
-                    <% else %>
+                  <% else %>
 
-                      <li class="nav-item">
-                        <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
-                      </li>
-                      <li class="nav-item">
-                        <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
-                      </li>
+                    <li class="nav-item">
+                      <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+                    </li>
 
-                    <% end %>
+                  <% end %>
 
-                  </ul>
+                </ul>
 
-            <!--      <form class="d-flex" role="search">
+                <!--      <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                   </form>-->
-                </div>
               </div>
-            </nav>
+            </div>
+          </nav>
