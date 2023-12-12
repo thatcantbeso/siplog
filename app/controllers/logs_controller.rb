@@ -71,23 +71,23 @@ class LogsController < ApplicationController
     end
   end
 
-  def increase_range
-    @log = Log.find(params[:id])
-    @log.increment!(:rating)
+  # def increase_range
+  #   @log = Log.find(params[:id])
+  #   @log.increment!(:rating)
 
-    respond_to do |format|
-      format.js
-    end
-  end
+  #   respond_to do |format|
+  #     format.js
+  #   end
+  # end
 
-  def decrease_range
-    @log = Log.find(params[:id])
-    @log.decrement!(:rating)
+  # def decrease_range
+  #   @log = Log.find(params[:id])
+  #   @log.decrement!(:rating)
 
-    respond_to do |format|
-      format.js
-    end
-  end
+  #   respond_to do |format|
+  #     format.js
+  #   end
+  # end
 
   def set_log
     @log = Log.find(params[:id])
