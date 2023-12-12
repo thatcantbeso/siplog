@@ -1,11 +1,10 @@
 <div class="col">
   <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
-<small class="text-body-secondary">
-  Made on <%= log.date_time&.strftime("%D at %I:%M%p") %>
-</small>
+      <small class="text-body-secondary">
+        Made on <%= log.date_time&.strftime("%D at %I:%M%p") %>
+      </small>
 
-      
       <% if log.favorite %>
         <button class="btn btn-link favorite-button"><i class="fa-solid fa-mug-hot fa-shake fa-xl" style="color: #f0d000;"></i></button>
       <% end %>
@@ -19,7 +18,7 @@
 
         </div>
 
-        <img src="<%= log.photo %>" class="card-img-responsive" width="400" alt="<%= log.photo.present? ? 'Log Image' : 'Default Alt Text' %>">
+        <img src="<%= log.photo %>" class="card-img-top" alt="<%= log.photo.present? ? 'Log Image' : 'No Photo Uploaded' %>">
 
         <div class="card-body">
           <h5 class="card-title">Notes</h5>
