@@ -3,9 +3,9 @@
 <%= render "form", grinder: @grinder %>
 
 <br>
-<%= button_to "Destroy this grinder", @grinder, method: :delete %>
+<%= button_to "Destroy this grinder", @grinder, method: :delete, class: 'btn btn-danger' %>
 <br>
 
 <div>
-  <%= link_to "Back to grinders", grinders_path %>
+  <%= link_to "Back to grinders", grinders_path, class: 'btn btn-secondary' %>
 </div>
