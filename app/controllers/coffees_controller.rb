@@ -7,7 +7,6 @@ class CoffeesController < ApplicationController
   def index
     @coffees = policy_scope(Coffee)
     verify_policy_scoped
-    @coffees = Coffee.where(owner: current_user).order(created_at: :desc)
   end
 
   def show

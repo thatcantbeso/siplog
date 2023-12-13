@@ -7,7 +7,6 @@ class GrindersController < ApplicationController
   def index
     @grinders = policy_scope(Grinder)
     verify_policy_scoped
-    @grinders = Brewer.where(owner: current_user).order(created_at: :desc)
   end
 
 
@@ -34,7 +33,6 @@ class GrindersController < ApplicationController
 
   def create
     @grinder = Grinder.new(grinder_params)
-
     respond_to do |format|
       if @grinder.save
         format.html { redirect_to grinders_path, notice: "Grinder was successfully created." }
