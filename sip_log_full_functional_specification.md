@@ -82,3 +82,7 @@ Create an application that keeps track of all the coffee equipment and coffees t
 
 ### Entity Relationship Diagram
 <img src="/app/assets/images/erd.png" alt="Entity Relationship Diagram">
+
+### Early Sketches
+<img src="/app/assets/images/speedy eights" alt="speedy eights siplog">
+<img src="/app/assets/images/final sketch.png" alt="Final siplog sketch">
