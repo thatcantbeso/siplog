@@ -1,57 +1,54 @@
 <nav class="navbar navbar-expand-lg bg-primary mb-4" data-bs-theme="dark" >
   <div class="container-fluid">
-    <a class="navbar-brand" <%= link_to 'Siplog', logs_path %></a>
-
- <a class="navbar-brand" href="#">
-      <img src="path/to/your/logo.png" alt="Your Logo" height="30" class="d-inline-block align-top">
+    <a class="navbar-brand" href="<%= logs_path %>" style="font-size: 36px;">
+      Siplog
+      <img src="https://i.imgur.com/vmVidGT.png" alt="Siplog" height="60" class="d-inline-block align-top">
     </a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" <%= link_to 'Coffees', coffees_path %></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" <%= link_to 'Grinders', grinders_path %></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" <%= link_to 'Brewers', brewers_path %></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" <%= link_to 'Logs', logs_path %></a>
-                  </li>
-                </ul>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="nav nav-pills nav-fill gap-2 p-3 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
+        <li class="nav-item" style="font-size: 17px;" role="presentation">
+          <%= link_to 'Coffees', coffees_path, class: 'nav-link' + (' active' if current_page?(coffees_path)).to_s, 'aria-current': ('page' if current_page?(coffees_path)) %>
+        </li>
+        <li class="nav-item" style="font-size: 17px;" role="presentation">
+          <%= link_to 'Grinders', grinders_path, class: 'nav-link' + (' active' if current_page?(grinders_path)).to_s, 'aria-current': ('page' if current_page?(grinders_path)) %>
+        </li>
+        <li class="nav-item" style="font-size: 17px;" role="presentation">
+          <%= link_to 'Brewers', brewers_path, class: 'nav-link' + (' active' if current_page?(brewers_path)).to_s, 'aria-current': ('page' if current_page?(brewers_path)) %>
+        </li>
+        <li class="nav-item" style="font-size: 17px;" role="presentation">
+          <%= link_to 'Logs', logs_path, class: 'nav-link' + (' active' if current_page?(logs_path)).to_s, 'aria-current': ('page' if current_page?(logs_path)) %>
+        </li>
+      </ul>
+    </div>
+  </ul>
 
-                <ul class="navbar-nav">
-                  <% if user_signed_in? %>
-                    <li class="nav-item">
-                      <%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link" %>
-                    </li>
-                    <li class="nav-item">
-                      <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
-                    </li>
+  <ul class="navbar-nav">
+    <% if user_signed_in? %>
+      <li class="nav-item">
+        <%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
+      </li>
+    <% else %>
+      <li class="nav-item">
+        <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+      </li>
+    <% end %>
+  </ul>
 
-                  <% else %>
-
-                    <li class="nav-item">
-                      <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
-                    </li>
-                    <li class="nav-item">
-                      <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
-                    </li>
-
-                  <% end %>
-
-                </ul>
-
-                <!--      <form class="d-flex" role="search">
+  <!--      <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                   </form>-->
-              </div>
-            </div>
-          </nav>
+</div>
+</div>
+</nav>
