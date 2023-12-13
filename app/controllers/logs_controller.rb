@@ -9,15 +9,9 @@ class LogsController < ApplicationController
     @user = current_user
     @logs = policy_scope(Log)
     verify_policy_scoped
-    @logs = Log.all
+    @logs = Log.where(owner: current_user).order(created_at: :desc)
     @log = Log.new
-    
   end
-
-  # def show
-  #   @log = Log.find(params[:id])
-  #   authorize @log
-  # end
 
   def new
     @log = Log.new
@@ -71,24 +65,6 @@ class LogsController < ApplicationController
       redirect_back(fallback_location: root_url, notice: "Not your log.")
     end
   end
-
-  # def increase_range
-  #   @log = Log.find(params[:id])
-  #   @log.increment!(:rating)
-
-  #   respond_to do |format|
-  #     format.js
-  #   end
-  # end
-
-  # def decrease_range
-  #   @log = Log.find(params[:id])
-  #   @log.decrement!(:rating)
-
-  #   respond_to do |format|
-  #     format.js
-  #   end
-  # end
 
   def set_log
     @log = Log.find(params[:id])
