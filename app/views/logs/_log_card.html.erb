@@ -6,7 +6,7 @@
       </small>
 
       <% if log.favorite %>
-        <button class="btn btn-link favorite-button"><i class="fa-solid fa-mug-hot fa-shake fa-xl" style="color: #f0d000;"></i></button>
+        <i class="fa-solid fa-mug-hot fa-shake fa-xl" style="color: #f0d000;"></i>
       <% end %>
 
         </div>
@@ -28,11 +28,6 @@
             <div class="d-flex justify-content-between align-items-center">
               <%= form.range_field :rating, in: 1..100, class: "form-range w-100" %>
             </div>
-
-            <!-- <div class="d-flex">-->
-            <%#= link_to "<i class='fas fa-plus'></i>".html_safe, increase_range_log_path(log), method: :post, remote: true, class: "btn btn-success me-2", id: "increaseRangeBtn" %>
-            <%#= link_to "<i class='fas fa-minus'></i>".html_safe, decrease_range_log_path(log), method: :post, remote: true, class: "btn btn-danger me-2", id: "decreaseRangeBtn" %>
-            <!--              </div>-->
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <div class=" actions ml-auto">
                 <%= form.submit class: "btn btn-sm btn-primary" %>
