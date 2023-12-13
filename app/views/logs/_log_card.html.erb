@@ -9,13 +9,6 @@
         <button class="btn btn-link favorite-button"><i class="fa-solid fa-mug-hot fa-shake fa-xl" style="color: #f0d000;"></i></button>
       <% end %>
 
-      <%#= form_with(model: log, class: "d-inline-block", data: { remote: true }) do |form| %>
-        <%# form.button class: "btn btn-link link-underline link-underline-opacity-0 link-underline-opacity-100-hover" do %>
-          <!--
-            <i id="<%# log.favorite %>_favorites_icon" class="fa-solid fa-mug-hot fa-shake fa-xl" style="color: #f0d000;"></i>
-          <%# end %>-->
-          <%#end%>
-
         </div>
 
         <img src="<%= log.photo %>" class="card-img-top" alt="<%= log.photo.present? ? 'Log Image' : 'No Photo Uploaded' %>">

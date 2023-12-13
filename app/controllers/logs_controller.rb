@@ -11,6 +11,7 @@ class LogsController < ApplicationController
     verify_policy_scoped
     @logs = Log.all
     @log = Log.new
+    
   end
 
   # def show
