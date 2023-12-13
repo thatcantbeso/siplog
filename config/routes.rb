@@ -1,20 +1,9 @@
 Rails.application.routes.draw do
-  resources :logs, except: [:landing] do
-    resources :brewers
-    resources :grinders
-    resources :coffees
-
-    member do
-      post 'increase_range'
-      post 'decrease_range'
-    end
-  end
-
-  resources :brewers
-  resources :grinders
-  resources :coffees
+  resources :logs, except: [:show]
+  resources :brewers, except: [:show]
+  resources :grinders, except: [:show]
+  resources :coffees, except: [:show]
   devise_for :users
 
-  
   root to: "logs#index"
 end

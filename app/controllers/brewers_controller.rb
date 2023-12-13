@@ -1,6 +1,5 @@
 class BrewersController < ApplicationController
   before_action :set_brewer, only: %i[ show edit update destroy ]
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   after_action :verify_policy_scoped, only: %i[index]
   before_action {authorize (@brewer || Brewer) }
 
@@ -11,7 +10,6 @@ class BrewersController < ApplicationController
 
   def show
     @brewer = Brewer.find(params[:id])
-    authorize @brewer
   end
 
   def set_user

@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
+  include Pundit
+
   before_action :authenticate_user!
   skip_before_action :authenticate_user!, only: :landing
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-  include Pundit
   skip_forgery_protection
 
   private

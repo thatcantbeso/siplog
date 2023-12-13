@@ -34,7 +34,6 @@ group :test do
 end
 
 # AppDev Gems
-# ===========
 gem "appdev_support"
 gem "awesome_print"
 gem "devise"
