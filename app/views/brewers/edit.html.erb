@@ -3,9 +3,9 @@
 <%= render "form", brewer: @brewer %>
 
 <br>
-<%= button_to "Destroy this brewer", @brewer, method: :delete %>
-
+<%= button_to "Destroy this brewer", @brewer, method: :delete, class: 'btn btn-danger' %>
+<br>
 
 <div>
-  <%= link_to "Back to brewers", brewers_path %>
+  <%= link_to "Back to brewers", brewers_path, class: 'btn btn-secondary' %>
 </div>
