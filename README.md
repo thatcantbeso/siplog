@@ -71,3 +71,6 @@ Elevate your coffee game by creating a comprehensive log for better, more inform
 - material
 - owner_id
 - brew_type
+
+### Entity Relationship Diagram
+<img src="/app/assets/images/erd.png" alt="Entity Relationship Diagram">
