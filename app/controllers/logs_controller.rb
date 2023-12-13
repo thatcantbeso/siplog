@@ -1,6 +1,5 @@
 class LogsController < ApplicationController
   before_action :set_log, only: %i[ edit update destroy ]
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   after_action :verify_authorized, except: %i[index]
   after_action :verify_policy_scoped, only: %i[index]
   before_action {authorize (@log || Log) }
@@ -16,16 +15,13 @@ class LogsController < ApplicationController
   def new
     @log = Log.new
     @log.date_time = Time.current
-    authorize @log
   end
 
   def edit
-    authorize @log
   end
 
   def create
     @log = Log.new(log_params)
-    authorize @log
     respond_to do |format|
       if @log.save
         format.html { redirect_to logs_path, notice: "Log was successfully created." }
@@ -39,10 +35,9 @@ class LogsController < ApplicationController
   end
 
   def update
-    authorize @log
     respond_to do |format|
       if @log.update(log_params)
-        format.html { redirect_to log_url(@log), notice: "Log was successfully updated." }
+        format.html { redirect_to logs_url, notice: "Log was successfully updated." }
         format.json { render :index, status: :ok, location: @log }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +48,6 @@ class LogsController < ApplicationController
 
   # DELETE /logs/1 or /logs/1.json
   def destroy
-    authorize @log
     if current_user == @log.owner
       @log.destroy
       respond_to do |format|
