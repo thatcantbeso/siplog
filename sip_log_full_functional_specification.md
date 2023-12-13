@@ -1,6 +1,5 @@
 # Sip Log Specification
 
-Straight forward application in order to track how you make your coffee.
 Streamline your coffee experience with Siplog—an intuitive app designed to effortlessly track your coffee-making process.
 Log details about your coffees, brewers, and grinders, gaining a deeper understanding of what influences the taste of your brews. 
 Elevate your coffee game by creating a comprehensive log for better, more informed, and consistently delightful results.
