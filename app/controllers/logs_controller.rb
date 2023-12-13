@@ -51,7 +51,6 @@ class LogsController < ApplicationController
     end
   end
 
-  # DELETE /logs/1 or /logs/1.json
   def destroy
     authorize @log
     if current_user == @log.owner

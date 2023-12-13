@@ -7,6 +7,7 @@ class BrewersController < ApplicationController
   def index
     @brewers = policy_scope(Brewer)
     verify_policy_scoped
+    @brewers = Brewer.where(owner: current_user).order(created_at: :desc)
   end
 
   def show

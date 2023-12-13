@@ -7,6 +7,7 @@ class GrindersController < ApplicationController
   def index
     @grinders = policy_scope(Grinder)
     verify_policy_scoped
+    @grinders = Brewer.where(owner: current_user).order(created_at: :desc)
   end
 
 
