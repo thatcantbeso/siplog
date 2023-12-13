@@ -13,6 +13,10 @@ Elevate your coffee game by creating a comprehensive log for better, more inform
 ### Readability, Structure, and Intuitive
  Handwriting can be messy when referring back to old data. It should be easy to see your favorite logs and coffees. Accessing your data is just as important as writing data. Tracking your logs and referencing them is important to understanding.
 
+## Proposed Solution
+
+Create an application that keeps track of all the coffee equipment and coffees that you have. Siplog will make it simple to view and store all of your coffee logs and look back into them. Making coffee can be very difficult and time-consuming. It's important for users to be able to track what they have and replicate great brews they've down before. It should be easy for users to also diverge and experiment with new coffee, grinders, and brewers to try new brews.
+
 ## User Stories
 - As a user, I want to be able to create an account with my email and password and log in to see only my logs.
 
