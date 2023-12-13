@@ -1,6 +1,5 @@
 class GrindersController < ApplicationController
   before_action :set_grinder, only: %i[ show edit update destroy ]
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   after_action :verify_policy_scoped, only: %i[index]
   before_action {authorize (@grinder || Grinder) }
 
