@@ -1,17 +1,17 @@
-# ☕️ Sip Log ☕️
+# ☕️ Sip Log FULL Functional Specification ☕️
 
+Straight forward application in order to track how you make your coffee.
 Streamline your coffee experience with Siplog—an intuitive app designed to effortlessly track your coffee-making process.
 Log details about your coffees, brewers, and grinders, gaining a deeper understanding of what influences the taste of your brews. 
 Elevate your coffee game by creating a comprehensive log for better, more informed, and consistently delightful results.
 
- <a href="sip_log_full_functional_specification.md" target="_blank">
-        <button>View Siplog Full Functional Specification</button>
-    </a>
-
 ## Pain Points
-- Unorganized journals are clumsy, easy to lose/misplace, and not intuitive.
-- It's annoying to carry a journal around.
-- There are many recipes to brew coffee.
+### Unorganized journals are insufficient, clumsy, and easy to lose
+  Coffee journals usually are not well structured and organization is not great. It's hard to remember which recipes you like when it is very full. Plus, they are generally small and can be misplaced.
+### Accessibility anywhere
+ An app makes it available for generally anyone with an internet connection. There is almost twice as many phones as there are people. Plus, this app is also available on desktop.
+### Readability, Structure, and Intuitive
+- Handwriting can be messy when referring back to old data. It should be easy to see your favorite logs and coffees. Accessing your data is just as important as writing data. Tracking your logs and referencing them is important to understanding.
 
 ## User Stories
 - As a user, I want to be able to create an account with my email and password and log in to see only my logs.
@@ -35,7 +35,7 @@ Elevate your coffee game by creating a comprehensive log for better, more inform
 - coffee_id
 - grinder_id
 - brewer_id
-- photo
+- photo_id
 - notes
 - filter_paper
 - dosage
