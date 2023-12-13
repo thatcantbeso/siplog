@@ -11,7 +11,7 @@ Elevate your coffee game by creating a comprehensive log for better, more inform
 ### Accessibility anywhere
  An app makes it available for generally anyone with an internet connection. There is almost twice as many phones as there are people. Plus, this app is also available on desktop.
 ### Readability, Structure, and Intuitive
-- Handwriting can be messy when referring back to old data. It should be easy to see your favorite logs and coffees. Accessing your data is just as important as writing data. Tracking your logs and referencing them is important to understanding.
+ Handwriting can be messy when referring back to old data. It should be easy to see your favorite logs and coffees. Accessing your data is just as important as writing data. Tracking your logs and referencing them is important to understanding.
 
 ## User Stories
 - As a user, I want to be able to create an account with my email and password and log in to see only my logs.
