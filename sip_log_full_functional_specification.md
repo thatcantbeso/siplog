@@ -1,5 +1,4 @@
 # ☕️ Sip Log FULL Functional Specification ☕️
-
 Straight forward application in order to track how you make your coffee.
 Streamline your coffee experience with Siplog—an intuitive app designed to effortlessly track your coffee-making process.
 Log details about your coffees, brewers, and grinders, gaining a deeper understanding of what influences the taste of your brews. 
@@ -14,7 +13,6 @@ Elevate your coffee game by creating a comprehensive log for better, more inform
  Handwriting can be messy when referring back to old data. It should be easy to see your favorite logs and coffees. Accessing your data is just as important as writing data. Tracking your logs and referencing them is important to understanding.
 
 ## Proposed Solution
-
 Create an application that keeps track of all the coffee equipment and coffees that you have. Siplog will make it simple to view and store all of your coffee logs and look back into them. Making coffee can be very difficult and time-consuming. It's important for users to be able to track what they have and replicate great brews they've down before. It should be easy for users to also diverge and experiment with new coffee, grinders, and brewers to try new brews.
 
 ## User Stories
@@ -84,5 +82,5 @@ Create an application that keeps track of all the coffee equipment and coffees t
 <img src="/app/assets/images/erd.png" alt="Entity Relationship Diagram">
 
 ### Early Sketches
-<img src="/app/assets/images/speedy_eights.jpeg" alt="speedy eights siplog">
-<img src="/app/assets/images/final_sketch.jpeg" alt="Final siplog sketch">
+<img src="https://res.cloudinary.com/dgw4azuip/image/upload/f_auto,q_auto/speedy_eights_uhwdfk" alt="speedy eights siplog">
+<img src="https://res.cloudinary.com/dgw4azuip/image/upload/f_auto,q_auto/final_sketch_iopifk" alt="Final siplog sketch">
