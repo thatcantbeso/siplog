@@ -63,6 +63,8 @@ class CoffeesController < ApplicationController
     end
   end
 
+  private
+  
   def set_coffee
     @coffee = Coffee.find(params[:id])
   end

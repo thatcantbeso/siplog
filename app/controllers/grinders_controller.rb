@@ -72,6 +72,7 @@ class GrindersController < ApplicationController
     end
   end
 
+  private
 
   def set_grinder
     @grinder = Grinder.find(params[:id])

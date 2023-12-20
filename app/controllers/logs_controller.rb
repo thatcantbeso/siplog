@@ -60,6 +60,9 @@ class LogsController < ApplicationController
     end
   end
 
+  # These should be set under private methods
+  private
+
   def set_log
     @log = Log.find(params[:id])
   end

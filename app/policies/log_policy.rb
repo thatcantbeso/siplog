@@ -1,7 +1,7 @@
 class LogPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      if false #user&.admin?
+      if false #user&.admin? is this a future idea?
         scope.all
       else
         scope.where(owner_id: user)

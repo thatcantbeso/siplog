@@ -12,6 +12,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="nav nav-pills nav-fill gap-2 p-3 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
+      <!-- remove inline styles-->
         <li class="nav-item" style="font-size: 17px;" role="presentation">
           <%= link_to 'Coffees', coffees_path, class: 'nav-link' + (' active' if current_page?(coffees_path)).to_s, 'aria-current': ('page' if current_page?(coffees_path)) %>
         </li>

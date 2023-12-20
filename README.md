@@ -7,7 +7,7 @@ Elevate your coffee game by creating a comprehensive log for better, more inform
  <a href="sip_log_full_functional_specification.md" target="_blank">
         <button>View Siplog Full Functional Specification</button>
     </a>
-
+<!-- You should include install steps and you already have a lnk to your spec no need to repeat it here -->
 ## Pain Points
 - Unorganized journals are clumsy, easy to lose/misplace, and not intuitive.
 - It's annoying to carry a journal around.
