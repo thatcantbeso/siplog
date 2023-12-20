@@ -62,6 +62,8 @@ class BrewersController < ApplicationController
     end
   end
 
+  private
+  
   def set_brewer
     @brewer = Brewer.find(params[:id])
   end
